@@ -1,9 +1,7 @@
-/*import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class navbar extends StatelessWidget {
+  const navbar({super.key});
 
   static const String _title = 'Flutter Code Sample';
 
@@ -18,7 +16,6 @@ class MyApp extends StatelessWidget {
 
 class MyStatefulWidget extends StatefulWidget {
   const MyStatefulWidget({super.key});
-  
 
   @override
   State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
@@ -65,12 +62,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
+            icon: Icon(Icons.movie),
+            label: 'Movies',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(Icons.plus_one),
+            label: 'Add Movies',
           ),
         ],
         currentIndex: _selectedIndex,
@@ -80,4 +77,3 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     );
   }
 }
-*/
