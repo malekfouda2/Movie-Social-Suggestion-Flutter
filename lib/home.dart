@@ -3,25 +3,25 @@ import 'package:flutter/material.dart';
 class navbar extends StatelessWidget {
   const navbar({super.key});
 
-  static const String _title = 'Flutter Code Sample';
+  static const String _title = 'Home';
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: _title,
-      home: MyStatefulWidget(),
+      home: Home(),
     );
   }
 }
 
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({super.key});
+class Home extends StatefulWidget {
+  const Home({super.key});
 
   @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+  State<Home> createState() => _MyStatefulWidgetState();
 }
 
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+class _MyStatefulWidgetState extends State<Home> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
@@ -35,7 +35,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       style: optionStyle,
     ),
     Text(
-      'Index 2: School',
+      'Index 2: Add Movie',
       style: optionStyle,
     ),
   ];
