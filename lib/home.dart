@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 
 class navbar extends StatelessWidget {
   const navbar({super.key});
@@ -21,6 +21,13 @@ class Home extends StatefulWidget {
   State<Home> createState() => _MyStatefulWidgetState();
   //State<Home> createState() => Drawer();
 }
+
+class Home2 extends StatefulWidget {
+  const Home2({super.key});
+  @override
+  State<Home2> createState() => Drawer();
+}
+
 
 class _MyStatefulWidgetState extends State<Home> {
   int _selectedIndex = 0;
@@ -79,7 +86,7 @@ class _MyStatefulWidgetState extends State<Home> {
   }
 }
 
-class Drawer extends StatefulWidget {
+class Drawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -134,3 +141,4 @@ class Drawer extends StatefulWidget {
     );
   }
 }
+*/
