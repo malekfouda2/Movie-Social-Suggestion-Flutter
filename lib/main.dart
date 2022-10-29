@@ -4,6 +4,8 @@ import 'package:index/account.dart';
 import 'package:index/contactus.dart';
 import 'package:index/navpages/main_page.dart';
 //import 'LoginSceen.dart';
+import 'src/LoginSceen.dart';
+
 import 'my_drawer_header.dart';
 //import 'package:go_router/go_router.dart';
 
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MainPage(),
+      home: const LoginScreen(),
     );
   }
 }
