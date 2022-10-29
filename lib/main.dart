@@ -3,7 +3,7 @@ import 'package:index/src/LoginSceen.dart';
 import 'package:index/account.dart';
 import 'package:index/contactus.dart';
 import 'package:index/navpages/main_page.dart';
-import 'LoginSceen.dart';
+import 'src/LoginSceen.dart';
 import 'my_drawer_header.dart';
 //import 'package:go_router/go_router.dart';
 
