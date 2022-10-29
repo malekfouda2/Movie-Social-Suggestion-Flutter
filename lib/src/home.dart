@@ -69,8 +69,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             label: 'Business',
           ),
           BottomNavigationBarItem(
+            
             icon: Icon(Icons.school),
             label: 'School',
+            
           ),
         ],
         currentIndex: _selectedIndex,

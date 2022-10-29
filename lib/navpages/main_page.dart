@@ -18,7 +18,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   var currentPage = DrawerSections.HomePage;
-  List pages = [HomePage(), moviesPage(), addMoviesPage()];
+  List pages = [HomePage(), moviesPage() , add_movies(),];
 
   int currentIndex = 0;
 
