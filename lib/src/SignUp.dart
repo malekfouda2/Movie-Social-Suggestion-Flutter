@@ -160,8 +160,10 @@ class SignUpState extends State<SignUp> {
                 SizedBox(height: 20),
                 TextFormField(
                   validator: (String? value) {
-                    if ((value != 'male' || value != 'female')) {
-                      return "Error, genderd should be male or female";
+                    if (value!.isEmpty ||
+                        !RegExp(r'^[male]+$').hasMatch(value!) ||
+                        !RegExp(r'^[female]+$').hasMatch(value!)) {
+                      return "Error, genderd should be either male or female";
                     }
 
                     return null;
