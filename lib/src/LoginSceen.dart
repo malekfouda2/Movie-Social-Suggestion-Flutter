@@ -4,6 +4,7 @@ import 'package:index/navpages/home.dart';
 import 'package:index/src/ForgetPassword.dart';
 import 'package:index/src/SignUp.dart';
 import 'package:index/data/dummydata.dart';
+import 'package:index/models/loginModel.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -119,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     var pass = password.text;
                     mail.toString();
                     pass.toString();
-                    dummyData db = new dummyData();
+                    LoginModel db = new LoginModel();
                     if (db.compare(mail, pass)) {
                       print("success");
                     } else {
