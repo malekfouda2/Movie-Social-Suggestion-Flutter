@@ -113,13 +113,20 @@ Navigator.of(context).push(MaterialPageRoute(builder: (context){
 return const SignUp();
 }));
     },
-    
-    child: const Text('Sign up',
+       child: ElevatedButton(
+          // Within the `FirstScreen` widget
+          onPressed: () {
+            // Navigate to the second screen using a named route.
+            Navigator.pushNamed(context, '/second');
+          },
+          child: const Text('Sign up',
     style: TextStyle(
 color: Color.fromARGB(255, 35, 0, 116),
 fontSize: 20
     ),
     ),
+        ),
+  
     ),
   ],
 ),
