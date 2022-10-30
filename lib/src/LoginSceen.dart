@@ -125,6 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         print("failed");
                       }
                     }
+                    if (dummyData.isLoggedIn) {}
                   }),
 
               const SizedBox(
