@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:index/navpages/home.dart';
+import 'package:index/src/LoginSceen.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -295,7 +297,12 @@ class SignUpState extends State<SignUp> {
                         borderRadius: BorderRadius.circular(
                             50)), //el button elborder mdawar
                     onPressed: () {
-                      if (formKey.currentState!.validate()) {}
+                      if (formKey.currentState!.validate()) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginScreen()));
+                      }
                     }),
                 const SizedBox(
                   height: 20,
