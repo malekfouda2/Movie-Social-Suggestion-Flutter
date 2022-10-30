@@ -120,9 +120,10 @@ class SignUpState extends State<SignUp> {
                 TextFormField(
                   validator: (String? value) {
                     if (value!.isEmpty ||
-                        !RegExp(r'^[a-z A-Z]+$').hasMatch(value!)) {
+                        (!RegExp(r'^[a-z A-Z]+$').hasMatch(value!) ||
+                            RegExp(r'\s').hasMatch(value!))) {
                       //r for string and quotes for condition,^means beginning of a string
-                      return "Name should not include a number";
+                      return "Name should not include a number or spaces only";
                     }
 
                     return null;
@@ -201,8 +202,9 @@ class SignUpState extends State<SignUp> {
                 SizedBox(height: 20),
                 TextFormField(
                   validator: (String? value) {
-                    if (value != null && value.isEmpty) {
-                      return "Error";
+                    if (value!.isEmpty ||
+                        RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+                      return "your age should be a number";
                     }
 
                     return null;
@@ -240,8 +242,9 @@ class SignUpState extends State<SignUp> {
                 SizedBox(height: 20),
                 TextFormField(
                   validator: (String? value) {
-                    if (value != null && value.isEmpty) {
-                      return "Error";
+                    if (value!.isEmpty ||
+                        !RegExp(r'^[a-z A-Z]+$').hasMatch(value!)) {
+                      return "Error, name a country";
                     }
 
                     return null;
