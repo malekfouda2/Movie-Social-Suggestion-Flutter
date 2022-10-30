@@ -122,16 +122,10 @@ class SignUpState extends State<SignUp> {
                 TextFormField(
                   validator: (String? value) {
                     if (value!.isEmpty ||
-<<<<<<< HEAD
-                        !RegExp(r'^[a-z A-Z]+$').hasMatch(value!)) {
-                      //r for string and quotes for condition,^means beginning of a string
-                      return "Name should not include a number";
-=======
                         (!RegExp(r'^[a-z A-Z]+$').hasMatch(value!) ||
                             RegExp(r'\s').hasMatch(value!))) {
                       //r for string and quotes for condition,^means beginning of a string
                       return "Name should not include a number or spaces only";
->>>>>>> 35d9f556f564cccaf45c83af2e81033985092602
                     }
 
                     return null;
@@ -169,15 +163,10 @@ class SignUpState extends State<SignUp> {
                 SizedBox(height: 20),
                 TextFormField(
                   validator: (String? value) {
-<<<<<<< HEAD
-                    if ((value != 'male' || value != 'female')) {
-                      return "Error, genderd should be male or female";
-=======
                     if (value!.isEmpty ||
                         !RegExp(r'^[male]+$').hasMatch(value!) ||
                         !RegExp(r'^[female]+$').hasMatch(value!)) {
                       return "Error, genderd should be either male or female";
->>>>>>> 35d9f556f564cccaf45c83af2e81033985092602
                     }
 
                     return null;
@@ -215,14 +204,9 @@ class SignUpState extends State<SignUp> {
                 SizedBox(height: 20),
                 TextFormField(
                   validator: (String? value) {
-<<<<<<< HEAD
-                    if (value != null && value.isEmpty) {
-                      return "Error";
-=======
                     if (value!.isEmpty ||
                         RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
                       return "your age should be a number";
->>>>>>> 35d9f556f564cccaf45c83af2e81033985092602
                     }
 
                     return null;
@@ -260,14 +244,9 @@ class SignUpState extends State<SignUp> {
                 SizedBox(height: 20),
                 TextFormField(
                   validator: (String? value) {
-<<<<<<< HEAD
-                    if (value != null && value.isEmpty) {
-                      return "Error";
-=======
                     if (value!.isEmpty ||
                         !RegExp(r'^[a-z A-Z]+$').hasMatch(value!)) {
-                      return "Error, name a country";
->>>>>>> 35d9f556f564cccaf45c83af2e81033985092602
+                      return "Error, a country name should not include numbers";
                     }
 
                     return null;
@@ -318,16 +297,12 @@ class SignUpState extends State<SignUp> {
                         borderRadius: BorderRadius.circular(
                             50)), //el button elborder mdawar
                     onPressed: () {
-<<<<<<< HEAD
-                      if (formKey.currentState!.validate()) {}
-=======
                       if (formKey.currentState!.validate()) {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => LoginScreen()));
                       }
->>>>>>> 35d9f556f564cccaf45c83af2e81033985092602
                     }),
                 const SizedBox(
                   height: 20,
