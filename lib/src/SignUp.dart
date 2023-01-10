@@ -167,15 +167,10 @@ class SignUpState extends State<SignUp> {
                 SizedBox(height: 20),
                 TextFormField(
                   validator: (String? value) {
-<<<<<<< HEAD
-                    if ((value != 'male' || value != 'female')) {
-                      return "Error, genderd should be male or female";
-=======
                     if (value!.isEmpty ||
                         !RegExp(r'^[male]+$').hasMatch(value!) ||
                         !RegExp(r'^[female]+$').hasMatch(value!)) {
                       return "Error, genderd should be either male or female";
->>>>>>> 35d9f556f564cccaf45c83af2e81033985092602
                     }
 
                     return null;
@@ -254,14 +249,9 @@ class SignUpState extends State<SignUp> {
                 SizedBox(height: 20),
                 TextFormField(
                   validator: (String? value) {
-<<<<<<< HEAD
-                    if (value != null && value.isEmpty) {
-                      return "Error";
-=======
                     if (value!.isEmpty ||
                         !RegExp(r'^[a-z A-Z]+$').hasMatch(value!)) {
                       return "Error, name a country";
->>>>>>> 35d9f556f564cccaf45c83af2e81033985092602
                     }
 
                     return null;
