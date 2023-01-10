@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:index/navpages/home.dart';
-import 'package:index/src/LoginSceen.dart';
+import '../navpages/home.dart';
+import '../src/LoginSceen.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});

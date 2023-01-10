@@ -1,4 +1,4 @@
-import 'package:index/models/loginModel.dart';
+import '../models/loginModel.dart';
 
 class dummyData {
   static bool isLoggedIn = false;

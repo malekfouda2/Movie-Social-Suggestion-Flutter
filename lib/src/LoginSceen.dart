@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:index/navpages/home.dart';
-import 'package:index/src/ForgetPassword.dart';
-import 'package:index/src/SignUp.dart';
-import 'package:index/data/dummydata.dart';
-import 'package:index/models/loginModel.dart';
+import '../navpages/home.dart';
+import '../src/ForgetPassword.dart';
+import '../src/SignUp.dart';
+import '../data/dummydata.dart';
+import '../models/loginModel.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

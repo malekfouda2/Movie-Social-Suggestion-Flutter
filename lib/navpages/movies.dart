@@ -38,9 +38,9 @@ class _moviesPageState extends State<moviesPage> {
         body:ListView.builder(
           itemCount: movie.length,
           itemBuilder: (context, index) => ListTile(
-            leading: Image.network(movie[index].posterPath.toString()),
-            title: Text(movie[index].title.toString()),
-            subtitle: Text(movie[index].overview.toString()),
+            leading: Image.network(movie[index].results![index]!.posterPath.toString()),
+            title: Text(movie[index].results![index]!.originalTitle.toString()),
+            subtitle: Text(movie[index].results![index]!.overview.toString()),
           ),
           )
         );

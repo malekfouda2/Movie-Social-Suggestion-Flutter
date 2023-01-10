@@ -1,4 +1,4 @@
-import 'package:index/data/dummydata.dart';
+import '../data/dummydata.dart';
 
 class LoginModel {
   dummyData d = new dummyData();

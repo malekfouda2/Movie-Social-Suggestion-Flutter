@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/material/icons.dart';
-import 'package:index/navpages/add_movies.dart';
-import 'package:index/navpages/home.dart';
-import 'package:index/navpages/movies.dart';
-import 'package:index/account.dart';
-import 'package:index/contactus.dart';
-import 'package:index/my_drawer_header.dart';
-import 'package:index/navpagesadmin/requests.dart';
-import 'package:index/navpagesadmin/mangeuser.dart';
-import 'package:index/navpagesadmin/mangemovies.dart';
+import '../navpages/add_movies.dart';
+import '../navpages/home.dart';
+import '../navpages/movies.dart';
+import '../account.dart';
+import '../contactus.dart';
+import '../my_drawer_header.dart';
+import '../navpagesadmin/requests.dart';
+import '../navpagesadmin/mangeuser.dart';
+import '../navpagesadmin/mangemovies.dart';
 
 
 class MainPageAdmin extends StatefulWidget {

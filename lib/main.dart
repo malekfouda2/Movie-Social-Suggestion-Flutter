@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:index/src/LoginSceen.dart';
-import 'package:index/account.dart';
-import 'package:index/contactus.dart';
-import 'package:index/navpages/main_page.dart';
+import 'package:movies_app/navpages/movies.dart';
+import '../src/LoginSceen.dart';
+import '../account.dart';
+import '../contactus.dart';
+import '../navpages/main_page.dart';
 //import 'LoginSceen.dart';
 import 'src/LoginSceen.dart';
 import 'navpagesadmin/main_pageadmin.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginScreen(),
+      home: const moviesPage(),
     );
   }
 }
