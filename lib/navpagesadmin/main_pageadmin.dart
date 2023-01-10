@@ -8,21 +8,21 @@ import 'package:index/navpages/movies.dart';
 import 'package:index/account.dart';
 import 'package:index/contactus.dart';
 import 'package:index/my_drawer_header.dart';
+import 'package:index/navpagesadmin/requests.dart';
+import 'package:index/navpagesadmin/mangeuser.dart';
+import 'package:index/navpagesadmin/mangemovies.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+
+class MainPageAdmin extends StatefulWidget {
+  const MainPageAdmin({super.key});
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<MainPageAdmin> createState() => MainPageAdminState();
 }
 
-class _MainPageState extends State<MainPage> {
+class MainPageAdminState extends State<MainPageAdmin> {
   var currentPage = DrawerSections.HomePage;
-  List pages = [
-    HomePage(),
-    moviesPage(),
-    add_movies(),
-  ];
+  List pages = [requests(), mangeuser() , mangemovies(),];
 
   int currentIndex = 0;
 
@@ -48,11 +48,11 @@ class _MainPageState extends State<MainPage> {
         elevation: 0,
         items: [
           BottomNavigationBarItem(
-              icon: const Icon(Icons.home_max), label: 'Home'),
+              icon: const Icon(Icons.home_max), label: 'requests'),
           BottomNavigationBarItem(
-              icon: const Icon(Icons.movie_creation_outlined), label: 'Movies'),
+              icon: const Icon(Icons.movie_creation_outlined), label: 'mange user'),
           BottomNavigationBarItem(
-              icon: const Icon(Icons.add), label: 'Add Movie')
+              icon: const Icon(Icons.add), label: 'mange movies')
         ],
       ),
       appBar: AppBar(
@@ -87,6 +87,131 @@ class _MainPageState extends State<MainPage> {
           menuItem(2, "Contact Us", Icons.people_alt_outlined,
               currentPage == DrawerSections.contactus ? true : false),
           menuItem(3, "Home", Icons.home,
+              currentPage == DrawerSections.Account ? true : false),
+          menuItem(4, "Notes", Icons.notes,
+              currentPage == DrawerSections.notes ? true : false),
+          Divider(),
+          menuItem(5, "Settings", Icons.settings_outlined,
+              currentPage == DrawerSections.settings ? true : false),
+          menuItem(6, "Notifications", Icons.notifications_outlined,
+              currentPage == DrawerSections.notifications ? true : false),
+          Divider(),
+          menuItem(7, "Privacy policy", Icons.privacy_tip_outlined,
+              currentPage == DrawerSections.privacy_policy ? true : false),
+          menuItem(8, "Send feedback", Icons.feedback_outlined,
+              currentPage == DrawerSections.send_feedback ? true : false),
+        ],
+      ),
+    );
+  }
+
+  Widget menuItem(int id, String title, IconData icon, bool selected) {
+    return Material(
+      color: selected ? Colors.grey[300] : Colors.transparent,
+      child: InkWell(
+        onTap: () {
+          Navigator.pop(context);
+          setState(() {
+            if (id == 1) {
+              currentPage = DrawerSections.HomePage;
+            } else if (id == 2) {
+              currentPage = DrawerSections.contactus;
+            } else if (id == 3) {
+              currentPage = DrawerSections.Account;
+            } else if (id == 4) {
+              currentPage = DrawerSections.notes;
+            } else if (id == 5) {
+              currentPage = DrawerSections.settings;
+            } else if (id == 6) {
+              currentPage = DrawerSections.notifications;
+            } else if (id == 7) {
+              currentPage = DrawerSections.privacy_policy;
+            } else if (id == 8) {
+              currentPage = DrawerSections.send_feedback;
+            }
+          });
+        },
+        child: Padding(
+          padding: EdgeInsets.all(15.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: Icon(
+                  icon,
+                  size: 20,
+                  color: Colors.black,
+                ),
+              ),
+              Expanded(
+                flex: 3,
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class myDrawer extends StatefulWidget {
+  @override
+  _MydrawerState createState() => _MydrawerState();
+}
+
+class _MydrawerState extends State<myDrawer> {
+  var currentPage = DrawerSections.HomePage;
+
+  @override
+  Widget build(BuildContext context) {
+    var container;
+    if (currentPage == DrawerSections.HomePage) {
+      container = HomePage();
+    } else if (currentPage == DrawerSections.contactus) {
+      container = contactUs();
+    } else if (currentPage == DrawerSections.Account) {
+      container = Account();
+    }
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.green[700],
+        title: Text("Rapid Tech"),
+      ),
+      body: container,
+      drawer: Drawer(
+        child: SingleChildScrollView(
+          child: Container(
+            child: Column(
+              children: [
+                MyHeaderDrawer(),
+                MyDrawerList(),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget MyDrawerList() {
+    return Container(
+      padding: EdgeInsets.only(
+        top: 15,
+      ),
+      child: Column(
+        // shows the list of menu drawer
+        children: [
+          menuItem(1, "Dashboard", Icons.dashboard_outlined,
+              currentPage == DrawerSections.HomePage ? true : false),
+          menuItem(2, "Contacts", Icons.people_alt_outlined,
+              currentPage == DrawerSections.contactus ? true : false),
+          menuItem(3, "Events", Icons.event,
               currentPage == DrawerSections.Account ? true : false),
           menuItem(4, "Notes", Icons.notes,
               currentPage == DrawerSections.notes ? true : false),
