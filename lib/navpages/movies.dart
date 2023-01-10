@@ -13,7 +13,7 @@ class moviesPage extends StatefulWidget {
 }
 
 class _moviesPageState extends State<moviesPage> {
-  List<Movie> movie = <Movie>[];
+  Movie movie = Movie();
   var isLoaded = false;
   @override
   void initState() {
@@ -23,9 +23,10 @@ class _moviesPageState extends State<moviesPage> {
 
   getData() async {
     movie = await MoviesServices().getOrganizations();
-    if (movie.isNotEmpty) {
+    if (movie.results != null) {
       setState(() {
         isLoaded = true;
+        print(movie.page);
       });
     }
   }
@@ -35,14 +36,16 @@ class _moviesPageState extends State<moviesPage> {
         appBar: AppBar(
           title: const Text("Movies Page"),
         ),
-        body:ListView.builder(
-          itemCount: movie.length,
+        body:
+        (movie.results?.length != null)?
+        ListView.builder(
+          itemCount: movie.results?.length ?? 0,
           itemBuilder: (context, index) => ListTile(
-            leading: Image.network(movie[index].results![index]!.posterPath.toString()),
-            title: Text(movie[index].results![index]!.originalTitle.toString()),
-            subtitle: Text(movie[index].results![index]!.overview.toString()),
+            leading: Image.network('https://image.tmdb.org/t/p/w500/'+movie.results![index]!.posterPath.toString()),
+            title: Text(movie.results![index]!.originalTitle.toString()),
+            subtitle: Text(movie.results![index]!.overview.toString()),
           ),
-          )
+          ) : const Center(child: CircularProgressIndicator(),)
         );
   }
 }

@@ -20,8 +20,7 @@ class Movie {
         page: json["page"],
         results: json["results"] == null
             ? []
-            : List<Result?>.from(
-                json["results"]!.map((x) => Result.fromJson(x))),
+            : List<Result?>.from(json["results"]!.map((x) => Result.fromMap(x))),
         totalPages: json["total_pages"],
         totalResults: json["total_results"],
       );
@@ -34,6 +33,13 @@ class Movie {
         "total_pages": totalPages,
         "total_results": totalResults,
       };
+
+      static List<Movie> games(List oneGame) {
+    return oneGame.map((data) {
+      //print("data $data");
+      return Movie.movieFromJson(data);
+    }).toList();
+  }
 }
 
 class Result {
@@ -81,7 +87,7 @@ class Result {
         overview: json["overview"],
         popularity: json["popularity"].toDouble(),
         posterPath: json["poster_path"],
-        releaseDate: DateTime.parse(json["release_date"]),
+        releaseDate: json["release_date"] == null ? null : DateTime.parse(json["release_date"]),
         title: json["title"],
         video: json["video"],
         voteAverage: json["vote_average"].toDouble(),

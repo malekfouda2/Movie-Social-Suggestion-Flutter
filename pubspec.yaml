@@ -18,6 +18,7 @@ dependencies:
   http: ^0.13.5
   fade_shimmer: ^2.0.1
   flutter_launcher_icons: ^0.10.0
+  flutter_dotenv: ^5.0.2
   
 flutter_icons:
   android: true
