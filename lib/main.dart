@@ -6,8 +6,6 @@ import 'package:index/src/LoginSceen.dart';
 import 'package:index/account.dart';
 import 'package:index/contactus.dart';
 import 'package:index/navpages/main_page.dart';
-import 'package:index/src/Mohamed.dart';
-import 'package:index/src/SignUp.dart';
 //import 'LoginSceen.dart';
 import 'src/LoginSceen.dart';
 import 'navpagesadmin/main_pageadmin.dart';
@@ -46,7 +44,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const LoginScreen(),
+      home: const MainPageAdmin(),
     );
   }
 }

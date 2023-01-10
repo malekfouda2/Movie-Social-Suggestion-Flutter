@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:index/navpages/home.dart';
-import 'package:index/src/LoginSceen.dart';
+import '../navpages/home.dart';
+import '../src/LoginSceen.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -165,7 +165,52 @@ class SignUpState extends State<SignUp> {
                 ),
 
                 SizedBox(height: 20),
-                
+                TextFormField(
+                  validator: (String? value) {
+<<<<<<< HEAD
+                    if ((value != 'male' || value != 'female')) {
+                      return "Error, genderd should be male or female";
+=======
+                    if (value!.isEmpty ||
+                        !RegExp(r'^[male]+$').hasMatch(value!) ||
+                        !RegExp(r'^[female]+$').hasMatch(value!)) {
+                      return "Error, genderd should be either male or female";
+>>>>>>> 35d9f556f564cccaf45c83af2e81033985092602
+                    }
+
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    hintText: 'Gender',
+                    prefixIcon: Icon(Icons.email),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                          20), //borders for the email text
+                      borderSide: const BorderSide(
+                        color: Colors.orange,
+                        width: 1.5,
+                      ),
+                    ),
+                    disabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                          20), //borders for the email text
+                      borderSide: const BorderSide(
+                        color: Colors.orange,
+                        width: 1.5,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                          20), //borders for the email text
+                      borderSide: const BorderSide(
+                        color: Colors.orange,
+                        width: 1.5,
+                      ),
+                    ),
+                  ),
+                ),
+
+                SizedBox(height: 20),
                 TextFormField(
                   validator: (String? value) {
                     if (value!.isEmpty ||
@@ -206,7 +251,51 @@ class SignUpState extends State<SignUp> {
                   ),
                 ),
 
-               SizedBox(height: 20,),
+                SizedBox(height: 20),
+                TextFormField(
+                  validator: (String? value) {
+<<<<<<< HEAD
+                    if (value != null && value.isEmpty) {
+                      return "Error";
+=======
+                    if (value!.isEmpty ||
+                        !RegExp(r'^[a-z A-Z]+$').hasMatch(value!)) {
+                      return "Error, name a country";
+>>>>>>> 35d9f556f564cccaf45c83af2e81033985092602
+                    }
+
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    hintText: 'Country',
+                    prefixIcon: Icon(Icons.email),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                          20), //borders for the email text
+                      borderSide: const BorderSide(
+                        color: Colors.orange,
+                        width: 1.5,
+                      ),
+                    ),
+                    disabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                          20), //borders for the email text
+                      borderSide: const BorderSide(
+                        color: Colors.orange,
+                        width: 1.5,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                          20), //borders for the email text
+                      borderSide: const BorderSide(
+                        color: Colors.orange,
+                        width: 1.5,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
 
                 MaterialButton(
                     color: Color.fromARGB(255, 82, 79, 77),

@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:index/navpages/home.dart';
-import 'package:index/src/ForgetPassword.dart';
-import 'package:index/src/SignUp.dart';
-import 'package:index/data/dummydata.dart';
-import 'package:index/models/loginModel.dart';
+import '../navpages/home.dart';
+import '../src/ForgetPassword.dart';
+import '../src/SignUp.dart';
+import '../data/dummydata.dart';
+import '../models/loginModel.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -119,16 +119,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.circular(
                           50)), //el button elborder mdawar
                   onPressed: () {
-                    var mail = email.text;
-                    var pass = password.text;
-                    mail.toString();
-                    pass.toString();
-                    LoginModel db = new LoginModel();
-                    if (db.compare(mail, pass)) {
-                      print("success");
-                    } else {
-                      print("failure");
+                    for (int i = 0; i < dummyData.Users.length; i++) {
+                      if (dummyData.Users[i][1] == email.text &&
+                          dummyData.Users[i][2] == password.text) {
+                        dummyData.isLoggedIn = true;
+                        print("Logged In");
+                      } else {
+                        print("failed");
+                      }
                     }
+                    if (dummyData.isLoggedIn) {}
                   }),
 
               const SizedBox(
