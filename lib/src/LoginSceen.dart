@@ -39,12 +39,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   hintText: 'Email',
-                  prefixIcon: Icon(Icons.email),
+                  hintStyle: TextStyle(color: Colors.white),
+                  prefixIcon: Icon(Icons.email , color: Colors.white,),
                   enabledBorder: OutlineInputBorder(
                     borderRadius:
                         BorderRadius.circular(20), //borders for the email text
                     borderSide: const BorderSide(
-                      color: Colors.orange,
+                      color: Colors.white,
                       width: 1.5,
                     ),
                   ),
@@ -52,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius:
                         BorderRadius.circular(20), //borders for the email text
                     borderSide: const BorderSide(
-                      color: Colors.orange,
+                      color: Colors.white,
                       width: 1.5,
                     ),
                   ),
@@ -60,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius:
                         BorderRadius.circular(20), //borders for the email text
                     borderSide: const BorderSide(
-                      color: Colors.orange,
+                      color: Colors.white,
                       width: 1.5,
                     ),
                   ),
@@ -73,12 +74,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 obscureText: true,
                 decoration: InputDecoration(
                   hintText: 'password',
-                  prefixIcon: Icon(Icons.email),
+                  hintStyle: TextStyle(color: Colors.white),
+                  prefixIcon: Icon(Icons.email, color: Colors.white,),
                   enabledBorder: OutlineInputBorder(
                     borderRadius:
                         BorderRadius.circular(20), //borders for the email text
                     borderSide: const BorderSide(
-                      color: Colors.orange,
+                      color: Colors.white,
                       width: 1.5,
                     ),
                   ),
@@ -86,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius:
                         BorderRadius.circular(20), //borders for the email text
                     borderSide: const BorderSide(
-                      color: Colors.orange,
+                      color: Colors.white,
                       width: 1.5,
                     ),
                   ),
@@ -94,15 +96,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius:
                         BorderRadius.circular(20), //borders for the email text
                     borderSide: const BorderSide(
-                      color: Colors.orange,
+                      color: Colors.white,
                       width: 1.5,
                     ),
                   ),
                 ),
               ),
               SizedBox(height: 20),
+
               MaterialButton(
-                  color: Colors.orange,
+                   color: Color.fromARGB(255, 82, 79, 77),
                   padding: EdgeInsets.symmetric(vertical: 20, horizontal: 80),
                   child: const Text(
                     'login',
@@ -141,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: const Text(
                   'Forget the password ?',
                   style: TextStyle(
-                      color: Color.fromARGB(255, 35, 0, 116), fontSize: 20),
+                      color: Colors.white, fontSize: 20),
                 ),
               ),
               const SizedBox(
@@ -157,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: const Text(
                   'Sign up',
                   style: TextStyle(
-                      color: Color.fromARGB(255, 35, 0, 116), fontSize: 20),
+                      color: Colors.white, fontSize: 20),
                 ),
               ),
             ],

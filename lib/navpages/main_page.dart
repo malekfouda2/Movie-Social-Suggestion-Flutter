@@ -34,11 +34,12 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.orange[700],
+        backgroundColor: Color(0xFF242A32),
         onTap: onTap,
         currentIndex: currentIndex,
         selectedItemColor: Colors.black,
@@ -56,7 +57,7 @@ class _MainPageState extends State<MainPage> {
         ],
       ),
       appBar: AppBar(
-        backgroundColor: Colors.orange[500],
+        backgroundColor: Color(0xFF242A32),
         title: Text("Movies Rating"),
       ),
       drawer: Drawer(

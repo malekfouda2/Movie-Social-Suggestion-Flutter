@@ -16,7 +16,7 @@ class SignUpState extends State<SignUp> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sign up'),
-        backgroundColor: Colors.orange[700],
+        backgroundColor: Color(0xFF242A32),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(
@@ -50,12 +50,13 @@ class SignUpState extends State<SignUp> {
                   },
                   decoration: InputDecoration(
                     hintText: 'Enter your Email',
-                    prefixIcon: Icon(Icons.email),
+                    hintStyle: TextStyle(color: Colors.white),
+                    prefixIcon: Icon(Icons.email ,color :Colors.white ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -63,7 +64,7 @@ class SignUpState extends State<SignUp> {
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -71,7 +72,7 @@ class SignUpState extends State<SignUp> {
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -90,12 +91,13 @@ class SignUpState extends State<SignUp> {
                   },
                   decoration: InputDecoration(
                     hintText: 'password',
-                    prefixIcon: Icon(Icons.email),
+                    hintStyle: TextStyle(color: Colors.white),
+                    prefixIcon: Icon(Icons.password ,color :Colors.white),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -103,7 +105,7 @@ class SignUpState extends State<SignUp> {
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -111,7 +113,7 @@ class SignUpState extends State<SignUp> {
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -132,12 +134,14 @@ class SignUpState extends State<SignUp> {
                   },
                   decoration: InputDecoration(
                     hintText: 'Name',
-                    prefixIcon: Icon(Icons.email),
+                     hintStyle: TextStyle(color: Colors.white),
+
+                    prefixIcon: Icon(Icons.email_rounded ,color :Colors.white),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -145,7 +149,7 @@ class SignUpState extends State<SignUp> {
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -153,7 +157,7 @@ class SignUpState extends State<SignUp> {
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -212,13 +216,14 @@ class SignUpState extends State<SignUp> {
                     return null;
                   },
                   decoration: InputDecoration(
-                    hintText: 'Age',
-                    prefixIcon: Icon(Icons.email),
+                    hintText: ('Date of Birth'),
+                    hintStyle: TextStyle(color: Colors.white),
+                    prefixIcon: Icon(Icons.date_range ,color :Colors.white),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -226,7 +231,7 @@ class SignUpState extends State<SignUp> {
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -234,7 +239,7 @@ class SignUpState extends State<SignUp> {
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -246,7 +251,7 @@ class SignUpState extends State<SignUp> {
                   validator: (String? value) {
                     if (value!.isEmpty ||
                         !RegExp(r'^[a-z A-Z]+$').hasMatch(value!)) {
-                      return "Error, a country name should not include numbers";
+                      return "Error, name a country";
                     }
 
                     return null;
@@ -283,7 +288,7 @@ class SignUpState extends State<SignUp> {
                 SizedBox(height: 20),
 
                 MaterialButton(
-                    color: Colors.orange,
+                    color: Color.fromARGB(255, 82, 79, 77),
                     padding: EdgeInsets.symmetric(vertical: 20, horizontal: 80),
                     child: const Text(
                       'Sign Up',
