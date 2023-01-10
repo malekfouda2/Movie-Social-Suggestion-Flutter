@@ -39,12 +39,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   hintText: 'Email',
-                  prefixIcon: Icon(Icons.email),
+                  hintStyle: TextStyle(color: Colors.white),
+                  prefixIcon: Icon(Icons.email , color: Colors.white,),
                   enabledBorder: OutlineInputBorder(
                     borderRadius:
                         BorderRadius.circular(20), //borders for the email text
                     borderSide: const BorderSide(
-                      color: Colors.orange,
+                      color: Colors.white,
                       width: 1.5,
                     ),
                   ),
@@ -52,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius:
                         BorderRadius.circular(20), //borders for the email text
                     borderSide: const BorderSide(
-                      color: Colors.orange,
+                      color: Colors.white,
                       width: 1.5,
                     ),
                   ),
@@ -60,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius:
                         BorderRadius.circular(20), //borders for the email text
                     borderSide: const BorderSide(
-                      color: Colors.orange,
+                      color: Colors.white,
                       width: 1.5,
                     ),
                   ),
@@ -73,12 +74,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 obscureText: true,
                 decoration: InputDecoration(
                   hintText: 'password',
-                  prefixIcon: Icon(Icons.email),
+                  hintStyle: TextStyle(color: Colors.white),
+                  prefixIcon: Icon(Icons.email, color: Colors.white,),
                   enabledBorder: OutlineInputBorder(
                     borderRadius:
                         BorderRadius.circular(20), //borders for the email text
                     borderSide: const BorderSide(
-                      color: Colors.orange,
+                      color: Colors.white,
                       width: 1.5,
                     ),
                   ),
@@ -86,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius:
                         BorderRadius.circular(20), //borders for the email text
                     borderSide: const BorderSide(
-                      color: Colors.orange,
+                      color: Colors.white,
                       width: 1.5,
                     ),
                   ),
@@ -94,15 +96,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius:
                         BorderRadius.circular(20), //borders for the email text
                     borderSide: const BorderSide(
-                      color: Colors.orange,
+                      color: Colors.white,
                       width: 1.5,
                     ),
                   ),
                 ),
               ),
               SizedBox(height: 20),
+
               MaterialButton(
-                  color: Colors.orange,
+                   color: Color.fromARGB(255, 82, 79, 77),
                   padding: EdgeInsets.symmetric(vertical: 20, horizontal: 80),
                   child: const Text(
                     'login',
@@ -141,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: const Text(
                   'Forget the password ?',
                   style: TextStyle(
-                      color: Color.fromARGB(255, 35, 0, 116), fontSize: 20),
+                      color: Colors.white, fontSize: 20),
                 ),
               ),
               const SizedBox(
@@ -157,112 +160,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: const Text(
                   'Sign up',
                   style: TextStyle(
-                      color: Color.fromARGB(255, 35, 0, 116), fontSize: 20),
+                      color: Colors.white, fontSize: 20),
                 ),
               ),
             ],
           ),
         ),
-<<<<<<< HEAD
-        disabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20), //borders for the email text
-        borderSide: const BorderSide(
-          color: Colors.orange ,
-        width: 1.5 ,
-        ),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20), //borders for the email text
-        borderSide: const BorderSide(
-          color: Colors.orange  ,
-        width: 1.5 ,
-        ),
-        ),
-      ),
-    ),
-      SizedBox(height: 20),
-       TextField(
-      decoration: InputDecoration(
-        hintText: 'password' ,
-        prefixIcon: Icon(Icons.email),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20), //borders for the email text
-        borderSide: const BorderSide(
-          color: Colors.orange ,
-        width: 1.5 ,
-        ),
-        ),
-        disabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20), //borders for the email text
-        borderSide: const BorderSide(
-          color: Colors.orange ,
-        width: 1.5 ,
-        ),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20), //borders for the email text
-        borderSide: const BorderSide(
-          color: Colors.orange ,
-        width: 1.5 ,
-        ),
-        ),
-      ),
-    ),
-    SizedBox(height: 20),
-    MaterialButton(
-      color: Colors.orange,
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 80),
-      child: const Text('login',
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: 25 ,
-        fontWeight: FontWeight.bold,
-      ),
-      ),
-       shape: OutlineInputBorder(borderRadius: BorderRadius.circular(50)),  //el button elborder mdawar 
-    onPressed: (){}
-    ),
-    const SizedBox(height: 20,),
-    GestureDetector(
-      onTap: (){
-Navigator.of(context).push(MaterialPageRoute(builder: (context){
-return const ForgetPassword();
-}));
-    },
-      child: const Text('Forget the password ?',
-    style: TextStyle(
-color: Color.fromARGB(255, 35, 0, 116),
-fontSize: 20
-    ),
-    ),
-    ),
-        const SizedBox(height: 10,),
-    GestureDetector(
-    onTap: (){
-Navigator.of(context).push(MaterialPageRoute(builder: (context){
-return const SignUp();
-}));
-    },
-       child: ElevatedButton(
-          // Within the `FirstScreen` widget
-          onPressed: () {
-            // Navigate to the second screen using a named route.
-            Navigator.pushNamed(context, '/second');
-          },
-          child: const Text('Sign up',
-    style: TextStyle(
-color: Color.fromARGB(255, 35, 0, 116),
-fontSize: 20
-    ),
-    ),
-        ),
-  
-    ),
-  ],
-),
-        ) , 
-=======
->>>>>>> 35d9f556f564cccaf45c83af2e81033985092602
       ),
     );
   }

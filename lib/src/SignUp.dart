@@ -16,7 +16,7 @@ class SignUpState extends State<SignUp> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sign up'),
-        backgroundColor: Colors.orange[700],
+        backgroundColor: Color(0xFF242A32),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(
@@ -50,12 +50,13 @@ class SignUpState extends State<SignUp> {
                   },
                   decoration: InputDecoration(
                     hintText: 'Enter your Email',
-                    prefixIcon: Icon(Icons.email),
+                    hintStyle: TextStyle(color: Colors.white),
+                    prefixIcon: Icon(Icons.email ,color :Colors.white ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -63,7 +64,7 @@ class SignUpState extends State<SignUp> {
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -71,7 +72,7 @@ class SignUpState extends State<SignUp> {
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -90,12 +91,13 @@ class SignUpState extends State<SignUp> {
                   },
                   decoration: InputDecoration(
                     hintText: 'password',
-                    prefixIcon: Icon(Icons.email),
+                    hintStyle: TextStyle(color: Colors.white),
+                    prefixIcon: Icon(Icons.password ,color :Colors.white),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -103,7 +105,7 @@ class SignUpState extends State<SignUp> {
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -111,7 +113,7 @@ class SignUpState extends State<SignUp> {
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -122,28 +124,24 @@ class SignUpState extends State<SignUp> {
                 TextFormField(
                   validator: (String? value) {
                     if (value!.isEmpty ||
-<<<<<<< HEAD
-                        !RegExp(r'^[a-z A-Z]+$').hasMatch(value!)) {
-                      //r for string and quotes for condition,^means beginning of a string
-                      return "Name should not include a number";
-=======
                         (!RegExp(r'^[a-z A-Z]+$').hasMatch(value!) ||
                             RegExp(r'\s').hasMatch(value!))) {
                       //r for string and quotes for condition,^means beginning of a string
                       return "Name should not include a number or spaces only";
->>>>>>> 35d9f556f564cccaf45c83af2e81033985092602
                     }
 
                     return null;
                   },
                   decoration: InputDecoration(
                     hintText: 'Name',
-                    prefixIcon: Icon(Icons.email),
+                     hintStyle: TextStyle(color: Colors.white),
+
+                    prefixIcon: Icon(Icons.email_rounded ,color :Colors.white),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -151,7 +149,7 @@ class SignUpState extends State<SignUp> {
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -159,7 +157,7 @@ class SignUpState extends State<SignUp> {
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -167,74 +165,25 @@ class SignUpState extends State<SignUp> {
                 ),
 
                 SizedBox(height: 20),
+                
                 TextFormField(
                   validator: (String? value) {
-<<<<<<< HEAD
-                    if ((value != 'male' || value != 'female')) {
-                      return "Error, genderd should be male or female";
-=======
-                    if (value!.isEmpty ||
-                        !RegExp(r'^[male]+$').hasMatch(value!) ||
-                        !RegExp(r'^[female]+$').hasMatch(value!)) {
-                      return "Error, genderd should be either male or female";
->>>>>>> 35d9f556f564cccaf45c83af2e81033985092602
-                    }
-
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                    hintText: 'Gender',
-                    prefixIcon: Icon(Icons.email),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                          20), //borders for the email text
-                      borderSide: const BorderSide(
-                        color: Colors.orange,
-                        width: 1.5,
-                      ),
-                    ),
-                    disabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                          20), //borders for the email text
-                      borderSide: const BorderSide(
-                        color: Colors.orange,
-                        width: 1.5,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                          20), //borders for the email text
-                      borderSide: const BorderSide(
-                        color: Colors.orange,
-                        width: 1.5,
-                      ),
-                    ),
-                  ),
-                ),
-
-                SizedBox(height: 20),
-                TextFormField(
-                  validator: (String? value) {
-<<<<<<< HEAD
-                    if (value != null && value.isEmpty) {
-                      return "Error";
-=======
                     if (value!.isEmpty ||
                         RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
                       return "your age should be a number";
->>>>>>> 35d9f556f564cccaf45c83af2e81033985092602
                     }
 
                     return null;
                   },
                   decoration: InputDecoration(
-                    hintText: 'Age',
-                    prefixIcon: Icon(Icons.email),
+                    hintText: ('Date of Birth'),
+                    hintStyle: TextStyle(color: Colors.white),
+                    prefixIcon: Icon(Icons.date_range ,color :Colors.white),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -242,7 +191,7 @@ class SignUpState extends State<SignUp> {
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
@@ -250,61 +199,17 @@ class SignUpState extends State<SignUp> {
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
                       borderSide: const BorderSide(
-                        color: Colors.orange,
+                        color: Colors.white,
                         width: 1.5,
                       ),
                     ),
                   ),
                 ),
 
-                SizedBox(height: 20),
-                TextFormField(
-                  validator: (String? value) {
-<<<<<<< HEAD
-                    if (value != null && value.isEmpty) {
-                      return "Error";
-=======
-                    if (value!.isEmpty ||
-                        !RegExp(r'^[a-z A-Z]+$').hasMatch(value!)) {
-                      return "Error, name a country";
->>>>>>> 35d9f556f564cccaf45c83af2e81033985092602
-                    }
-
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                    hintText: 'Country',
-                    prefixIcon: Icon(Icons.email),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                          20), //borders for the email text
-                      borderSide: const BorderSide(
-                        color: Colors.orange,
-                        width: 1.5,
-                      ),
-                    ),
-                    disabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                          20), //borders for the email text
-                      borderSide: const BorderSide(
-                        color: Colors.orange,
-                        width: 1.5,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                          20), //borders for the email text
-                      borderSide: const BorderSide(
-                        color: Colors.orange,
-                        width: 1.5,
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 20),
+               SizedBox(height: 20,),
 
                 MaterialButton(
-                    color: Colors.orange,
+                    color: Color.fromARGB(255, 82, 79, 77),
                     padding: EdgeInsets.symmetric(vertical: 20, horizontal: 80),
                     child: const Text(
                       'Sign Up',
@@ -318,16 +223,12 @@ class SignUpState extends State<SignUp> {
                         borderRadius: BorderRadius.circular(
                             50)), //el button elborder mdawar
                     onPressed: () {
-<<<<<<< HEAD
-                      if (formKey.currentState!.validate()) {}
-=======
                       if (formKey.currentState!.validate()) {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => LoginScreen()));
                       }
->>>>>>> 35d9f556f564cccaf45c83af2e81033985092602
                     }),
                 const SizedBox(
                   height: 20,
