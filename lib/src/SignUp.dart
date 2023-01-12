@@ -311,21 +311,21 @@ class SignUpState extends State<SignUp> {
                             50)), //el button elborder mdawar
 
                     onPressed: () {
-                      OnTap:
-                      () {
-                        FirebaseAuth.instance
-                            .createUserWithEmailAndPassword(
-                                email: EmailController.text,
-                                password: PasswordController.text)
-                            .then((value) {
-                          if (formKey.currentState!.validate()) {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const LoginScreen()));
-                          }
-                        });
-                      };
+                      FirebaseAuth.instance
+                          .createUserWithEmailAndPassword(
+                              email: EmailController.text,
+                              password: PasswordController.text)
+                          .then((value) {
+                        print("Created new account");
+                        if (formKey.currentState!.validate()) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const LoginScreen()));
+                        }
+                      }).onError((error, stackTrace) {
+                        print("Error ${error.toString()}");
+                      });
                     }),
 
                 const SizedBox(

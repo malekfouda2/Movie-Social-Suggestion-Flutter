@@ -1,10 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:movies_app/navpages/main_page.dart';
 import '../navpages/home.dart';
 import '../src/ForgetPassword.dart';
 import '../src/SignUp.dart';
 import '../data/dummydata.dart';
 import '../models/loginModel.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -14,8 +17,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController email = new TextEditingController();
-  TextEditingController password = new TextEditingController();
+  TextEditingController EmailController = new TextEditingController();
+  TextEditingController PasswordController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,12 +38,15 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 100), //3shan tdy space abyd fo2
               Image.asset('assets/images/logooo.png', width: 250, height: 250),
               TextField(
-                controller: email,
+                controller: EmailController,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   hintText: 'Email',
                   hintStyle: TextStyle(color: Colors.white),
-                  prefixIcon: Icon(Icons.email , color: Colors.white,),
+                  prefixIcon: Icon(
+                    Icons.email,
+                    color: Colors.white,
+                  ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius:
                         BorderRadius.circular(20), //borders for the email text
@@ -69,13 +75,16 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 20),
               TextField(
-                controller: password,
+                controller: PasswordController,
                 keyboardType: TextInputType.text,
                 obscureText: true,
                 decoration: InputDecoration(
                   hintText: 'password',
                   hintStyle: TextStyle(color: Colors.white),
-                  prefixIcon: Icon(Icons.email, color: Colors.white,),
+                  prefixIcon: Icon(
+                    Icons.email,
+                    color: Colors.white,
+                  ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius:
                         BorderRadius.circular(20), //borders for the email text
@@ -105,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(height: 20),
 
               MaterialButton(
-                   color: Color.fromARGB(255, 82, 79, 77),
+                  color: Color.fromARGB(255, 82, 79, 77),
                   padding: EdgeInsets.symmetric(vertical: 20, horizontal: 80),
                   child: const Text(
                     'login',
@@ -119,16 +128,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.circular(
                           50)), //el button elborder mdawar
                   onPressed: () {
-                    for (int i = 0; i < dummyData.Users.length; i++) {
-                      if (dummyData.Users[i][1] == email.text &&
-                          dummyData.Users[i][2] == password.text) {
-                        dummyData.isLoggedIn = true;
-                        print("Logged In");
-                      } else {
-                        print("failed");
-                      }
-                    }
-                    if (dummyData.isLoggedIn) {}
+                    FirebaseAuth.instance
+                        .signInWithEmailAndPassword(
+                            email: EmailController.text,
+                            password: PasswordController.text)
+                        .then((value) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const MainPage()));
+                    });
                   }),
 
               const SizedBox(
@@ -143,8 +152,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 child: const Text(
                   'Forget the password ?',
-                  style: TextStyle(
-                      color: Colors.white, fontSize: 20),
+                  style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ),
               const SizedBox(
@@ -159,8 +167,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 child: const Text(
                   'Sign up',
-                  style: TextStyle(
-                      color: Colors.white, fontSize: 20),
+                  style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ),
             ],
