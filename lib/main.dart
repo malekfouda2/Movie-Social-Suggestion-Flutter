@@ -19,7 +19,12 @@ import 'my_drawer_header.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+      options: const FirebaseOptions(
+          apiKey: "AIzaSyD7q1mpLiq-ZP9dDHRhC1Y-cN5EJP96wdE",
+          appId: "1:352259150436:android:431d22b33b4424242c8571",
+          messagingSenderId: "",
+          projectId: "moviesuggestion-32aef"));
   runApp(const MyApp());
 }
 
@@ -51,7 +56,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const SignUp(),
+      home: const LoginScreen(),
     );
   }
 }
