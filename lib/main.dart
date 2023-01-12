@@ -2,6 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth_web/firebase_auth_web.dart';
+
 import 'package:movies_app/src/SignUp.dart';
 import '../src/LoginSceen.dart';
 import '../account.dart';
@@ -13,7 +17,9 @@ import 'navpagesadmin/main_pageadmin.dart';
 import 'my_drawer_header.dart';
 //import 'package:go_router/go_router.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

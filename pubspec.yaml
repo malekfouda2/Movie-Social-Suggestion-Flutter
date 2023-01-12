@@ -19,6 +19,9 @@ dependencies:
   fade_shimmer: ^2.0.1
   flutter_launcher_icons: ^0.10.0
   flutter_dotenv: ^5.0.2
+  firebase_core: ^2.4.1
+  firebase_auth: ^4.2.5
+  firebase_auth_web: ^5.2.4
   
 flutter_icons:
   android: true

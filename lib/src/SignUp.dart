@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../navpages/home.dart';
 import '../src/LoginSceen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+
+final EmailController = TextEditingController();
+final PasswordController = TextEditingController();
+final NameController = TextEditingController();
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -38,6 +45,7 @@ class SignUpState extends State<SignUp> {
                 Image.asset('assets/images/logooo.png',
                     width: 250, height: 250),
                 TextFormField(
+                  controller: EmailController,
                   validator: (String? value) {
                     if (value!.isEmpty ||
                         !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}')
@@ -51,7 +59,7 @@ class SignUpState extends State<SignUp> {
                   decoration: InputDecoration(
                     hintText: 'Enter your Email',
                     hintStyle: TextStyle(color: Colors.white),
-                    prefixIcon: Icon(Icons.email ,color :Colors.white ),
+                    prefixIcon: Icon(Icons.email, color: Colors.white),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
@@ -80,6 +88,7 @@ class SignUpState extends State<SignUp> {
                 ),
                 SizedBox(height: 20),
                 TextFormField(
+                  controller: PasswordController,
                   validator: (String? value) {
                     if (value!.isEmpty ||
                         value.length < 7 ||
@@ -92,7 +101,7 @@ class SignUpState extends State<SignUp> {
                   decoration: InputDecoration(
                     hintText: 'password',
                     hintStyle: TextStyle(color: Colors.white),
-                    prefixIcon: Icon(Icons.password ,color :Colors.white),
+                    prefixIcon: Icon(Icons.password, color: Colors.white),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
@@ -134,9 +143,8 @@ class SignUpState extends State<SignUp> {
                   },
                   decoration: InputDecoration(
                     hintText: 'Name',
-                     hintStyle: TextStyle(color: Colors.white),
-
-                    prefixIcon: Icon(Icons.email_rounded ,color :Colors.white),
+                    hintStyle: TextStyle(color: Colors.white),
+                    prefixIcon: Icon(Icons.email_rounded, color: Colors.white),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
@@ -218,7 +226,7 @@ class SignUpState extends State<SignUp> {
                   decoration: InputDecoration(
                     hintText: ('Date of Birth'),
                     hintStyle: TextStyle(color: Colors.white),
-                    prefixIcon: Icon(Icons.date_range ,color :Colors.white),
+                    prefixIcon: Icon(Icons.date_range, color: Colors.white),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
                           20), //borders for the email text
@@ -301,14 +309,25 @@ class SignUpState extends State<SignUp> {
                     shape: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(
                             50)), //el button elborder mdawar
+
                     onPressed: () {
-                      if (formKey.currentState!.validate()) {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LoginScreen()));
-                      }
+                      OnTap:
+                      () {
+                        FirebaseAuth.instance
+                            .createUserWithEmailAndPassword(
+                                email: EmailController.text,
+                                password: PasswordController.text)
+                            .then((value) {
+                          if (formKey.currentState!.validate()) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const LoginScreen()));
+                          }
+                        });
+                      };
                     }),
+
                 const SizedBox(
                   height: 20,
                 ),
