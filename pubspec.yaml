@@ -19,6 +19,7 @@ dependencies:
   fade_shimmer: ^2.0.1
   flutter_launcher_icons: ^0.10.0
   flutter_dotenv: ^5.0.2
+  tmdb_api: ^2.1.4
   
 flutter_icons:
   android: true
