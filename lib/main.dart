@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth_web/firebase_auth_web.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:movies_app/src/SignUp.dart';
 import '../src/LoginSceen.dart';
@@ -25,7 +26,7 @@ void main() async {
           appId: "1:352259150436:android:431d22b33b4424242c8571",
           messagingSenderId: "",
           projectId: "moviesuggestion-32aef"));
-  runApp(const MyApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
