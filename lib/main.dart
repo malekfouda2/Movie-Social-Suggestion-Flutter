@@ -2,21 +2,31 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_app/navpages/homeJoe.dart';
-import 'package:movies_app/navpages/movies.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth_web/firebase_auth_web.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:movies_app/src/SignUp.dart';
 import '../src/LoginSceen.dart';
 import '../account.dart';
 import '../contactus.dart';
 import '../navpages/main_page.dart';
-import 'package:movies_app/navpages/main_page.dart';
 //import 'LoginSceen.dart';
 import 'src/LoginSceen.dart';
 import 'navpagesadmin/main_pageadmin.dart';
 import 'my_drawer_header.dart';
 //import 'package:go_router/go_router.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+      options: const FirebaseOptions(
+          apiKey: "AIzaSyD7q1mpLiq-ZP9dDHRhC1Y-cN5EJP96wdE",
+          appId: "1:352259150436:android:431d22b33b4424242c8571",
+          messagingSenderId: "",
+          projectId: "moviesuggestion-32aef"));
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -32,7 +42,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Welcome',
       debugShowCheckedModeBanner: false, //bashyl elbuner eldaigonal dah
-      
+
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xFF242A32),
         primarySwatch: Colors.blue,
@@ -47,7 +57,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home:  HomeScreen(),
+      home: const SignUp(),
     );
   }
 }
