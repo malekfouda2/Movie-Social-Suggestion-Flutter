@@ -35,6 +35,8 @@ class _moviesPageState extends State<moviesPage> {
    return Scaffold(
         appBar: AppBar(
           title: const Text("Movies Page"),
+                  backgroundColor: Color(0xFF242A32),
+
         ),
         body:
         (movie.results?.length != null)?
@@ -44,6 +46,8 @@ class _moviesPageState extends State<moviesPage> {
             leading: Image.network('https://image.tmdb.org/t/p/w500/'+movie.results![index]!.posterPath.toString()),
             title: Text(movie.results![index]!.originalTitle.toString()),
             subtitle: Text(movie.results![index]!.overview.toString()),
+            textColor: Colors.white,
+            
           ),
           ) : const Center(child: CircularProgressIndicator(),)
         );

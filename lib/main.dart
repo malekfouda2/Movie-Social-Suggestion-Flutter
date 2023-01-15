@@ -18,6 +18,7 @@ import '../navpages/main_page.dart';
 import 'src/LoginSceen.dart';
 import 'navpagesadmin/main_pageadmin.dart';
 import 'my_drawer_header.dart';
+import 'package:movies_app/navpages/movies.dart';
 //import 'package:go_router/go_router.dart';
 
 void main() async {
@@ -59,7 +60,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home:  SignUp(),
+      home:  MainPage(),
     );
   }
 }
