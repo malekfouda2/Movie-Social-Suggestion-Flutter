@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_app/navpages/main_page.dart';
-import '../navpages/home.dart';
 import '../src/ForgetPassword.dart';
 import '../src/SignUp.dart';
 import '../data/dummydata.dart';

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/material/icons.dart';
+import 'package:movies_app/navpages/homeJoe.dart';
 import '../navpages/add_movies.dart';
-import '../navpages/home.dart';
 import '../navpages/movies.dart';
 import '../account.dart';
 import '../contactus.dart';
@@ -172,7 +172,7 @@ class _MydrawerState extends State<myDrawer> {
   Widget build(BuildContext context) {
     var container;
     if (currentPage == DrawerSections.HomePage) {
-      container = HomePage();
+      container = HomeScreen();
     } else if (currentPage == DrawerSections.contactus) {
       container = contactUs();
     } else if (currentPage == DrawerSections.Account) {

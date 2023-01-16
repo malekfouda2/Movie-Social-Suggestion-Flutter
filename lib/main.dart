@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth_web/firebase_auth_web.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:movies_app/navpages/homeJoe.dart';
 
 import 'package:movies_app/src/SignUp.dart';
 import '../src/LoginSceen.dart';
@@ -57,7 +58,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const SignUp(),
+      home: MainPage(),
     );
   }
 }

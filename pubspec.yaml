@@ -38,5 +38,17 @@ dev_dependencies:
 
 flutter:
 
-  # uses-material-design: true
-  # assets:
+  uses-material-design: true
+  assets:
+    - assets/
+
+  # fonts:
+  #   - family: Poppins
+  #     fonts:
+  #       - asset: fonts/Poppins-Light.ttf
+  #       - asset: fonts/Poppins-Medium.ttf
+  #       - asset: fonts/Poppins-Regular.ttf
+  #       - asset: fonts/Poppins-Bold.ttf
+  #   - family: Montserrat
+  #     fonts:
+  #       - asset: fonts/Montserrat-Regular.otf

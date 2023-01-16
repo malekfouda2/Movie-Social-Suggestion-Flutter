@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/_http/mock/http_request_mock.dart';
 import 'package:movies_app/api/api.dart';
+import 'package:movies_app/navpages/details_screen.dart';
+import 'package:movies_app/widgets/top_rated_item.dart';
 
 import '../services/movies_service.dart';
 
@@ -18,8 +20,9 @@ class _HomeScreenState extends State<HomeScreen> {
    Movie nowPlaying = Movie();
    Movie popular = Movie();
   var mainTopRatedMovies = <Movie>[];
+  Result result = Result(); 
   var isLoaded = false;
-
+  
   @override
   void initState() {
     super.initState();
@@ -48,18 +51,19 @@ class _HomeScreenState extends State<HomeScreen> {
       body: 
         ListView(
           children: [
-             SizedBox(
+             const SizedBox(
               height: 10,
             ),
+
            Container(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                   'Now Playing Movies',style: TextStyle(color: Colors.orange,fontSize: 20),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Container(
                       // color: Colors.red,
                       height: 200,
@@ -67,54 +71,58 @@ class _HomeScreenState extends State<HomeScreen> {
                           scrollDirection: Axis.horizontal,
                           itemCount: nowPlaying.results?.length ?? 0,
                           itemBuilder: (context, index) {
-                            return Container(
-                              padding: EdgeInsets.all(5),
-                              // color: Colors.green,
-                              width: 250,
-                              child: Column(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      image: DecorationImage(
-                                          image: NetworkImage(
-                                              'https://image.tmdb.org/t/p/w500/'+nowPlaying.results![index]!.posterPath.toString()),
-                                          fit: BoxFit.cover),
+                            return InkWell(
+      onTap: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => DetailsScreen(movie:nowPlaying,index: index) ),
+                  );
+                },
+      child: Container(
+                                padding: const EdgeInsets.all(5),
+                                // color: Colors.green,
+                                width: 250,
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        image: DecorationImage(
+                                            image: NetworkImage(
+                                                'https://image.tmdb.org/t/p/w500/'+nowPlaying.results![index]!.posterPath.toString()),
+                                            fit: BoxFit.cover),
+                                      ),
+                                      height: 140,
                                     ),
-                                    height: 140,
-                                  ),
-                                  SizedBox(height: 5),
-                                  Container(
-                                    child: Text(
-                                        nowPlaying.results![index]!.originalTitle.toString()),
-                                  ),
-
-                                  
-
-                                ],
+                                    const SizedBox(height: 5),
+                                    Container(
+                                      child: Text(
+                                          nowPlaying.results![index]!.originalTitle.toString()),
+                                    ),
+    
+                                    
+    
+                                  ],
+                                ),
                               ),
-                            );
-
-                            
-
+    );
                           }))
                           ]
               ),
-           ),
+           )
+            ,
 
-
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
            Container(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                   'Top Rated Movies',style: TextStyle(color: Colors.orange,fontSize: 20),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Container(
                       // color: Colors.red,
                       height: 200,
@@ -122,33 +130,40 @@ class _HomeScreenState extends State<HomeScreen> {
                           scrollDirection: Axis.horizontal,
                           itemCount: movie.results?.length ?? 0,
                           itemBuilder: (context, index) {
-                            return Container(
-                              padding: EdgeInsets.all(5),
-                              // color: Colors.green,
-                              width: 250,
-                              child: Column(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      image: DecorationImage(
-                                          image: NetworkImage(
-                                              'https://image.tmdb.org/t/p/w500/'+movie.results![index]!.posterPath.toString()),
-                                          fit: BoxFit.cover),
+                            return InkWell(
+      onTap: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => DetailsScreen(movie:movie,index: index) ),
+                  );
+                },
+      child: Container(
+                                padding: const EdgeInsets.all(5),
+                                // color: Colors.green,
+                                width: 250,
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        image: DecorationImage(
+                                            image: NetworkImage(
+                                                'https://image.tmdb.org/t/p/w500/'+movie.results![index]!.posterPath.toString()),
+                                            fit: BoxFit.cover),
+                                      ),
+                                      height: 140,
                                     ),
-                                    height: 140,
-                                  ),
-                                  SizedBox(height: 5),
-                                  Container(
-                                    child: Text(
-                                        movie.results![index]!.originalTitle.toString()),
-                                  ),
-
-                                  
-
-                                ],
+                                    const SizedBox(height: 5),
+                                    Container(
+                                      child: Text(
+                                          movie.results![index]!.originalTitle.toString()),
+                                    ),
+    
+                                    
+    
+                                  ],
+                                ),
                               ),
-                            );
+    );
                           }))
                           ]
               ),
@@ -156,18 +171,18 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
 
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
            Container(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                   'Popular Movies',style: TextStyle(color: Colors.orange,fontSize: 20),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Container(
                       // color: Colors.red,
                       height: 200,
@@ -175,33 +190,40 @@ class _HomeScreenState extends State<HomeScreen> {
                           scrollDirection: Axis.horizontal,
                           itemCount: popular.results?.length ?? 0,
                           itemBuilder: (context, index) {
-                            return Container(
-                              padding: EdgeInsets.all(5),
-                              // color: Colors.green,
-                              width: 250,
-                              child: Column(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      image: DecorationImage(
-                                          image: NetworkImage(
-                                              'https://image.tmdb.org/t/p/w500/'+popular.results![index]!.posterPath.toString()),
-                                          fit: BoxFit.cover),
+                            return InkWell(
+      onTap: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => DetailsScreen(movie:popular,index: index) ),
+                  );
+                },
+      child: Container(
+                                padding: const EdgeInsets.all(5),
+                                // color: Colors.green,
+                                width: 250,
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        image: DecorationImage(
+                                            image: NetworkImage(
+                                                'https://image.tmdb.org/t/p/w500/'+popular.results![index]!.posterPath.toString()),
+                                            fit: BoxFit.cover),
+                                      ),
+                                      height: 140,
                                     ),
-                                    height: 140,
-                                  ),
-                                  SizedBox(height: 5),
-                                  Container(
-                                    child: Text(
-                                        popular.results![index]!.originalTitle.toString()),
-                                  ),
-
-                                  
-
-                                ],
+                                    const SizedBox(height: 5),
+                                    Container(
+                                      child: Text(
+                                          popular.results![index]!.originalTitle.toString()),
+                                    ),
+    
+                                    
+    
+                                  ],
+                                ),
                               ),
-                            );
+    );
 
                             
 

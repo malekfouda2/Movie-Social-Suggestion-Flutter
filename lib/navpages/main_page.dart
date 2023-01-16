@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/material/icons.dart';
+import 'package:movies_app/navpages/homeJoe.dart';
 import '../navpages/add_movies.dart';
-import '../navpages/home.dart';
 import '../navpages/movies.dart';
 import '../account.dart';
 import '../contactus.dart';
@@ -17,9 +17,9 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  var currentPage = DrawerSections.HomePage;
+  var currentPage = DrawerSections.HomeScreen;
   List pages = [
-    HomePage(),
+    HomeScreen(),
     moviesPage(),
     add_movies(),
   ];
@@ -84,7 +84,7 @@ class _MainPageState extends State<MainPage> {
         // shows the list of menu drawer
         children: [
           menuItem(1, "Account", Icons.account_box,
-              currentPage == DrawerSections.HomePage ? true : false),
+              currentPage == DrawerSections.HomeScreen ? true : false),
           menuItem(2, "Contact Us", Icons.people_alt_outlined,
               currentPage == DrawerSections.contactus ? true : false),
           menuItem(3, "Home", Icons.home,
@@ -114,7 +114,7 @@ class _MainPageState extends State<MainPage> {
           Navigator.pop(context);
           setState(() {
             if (id == 1) {
-              currentPage = DrawerSections.HomePage;
+              currentPage = DrawerSections.HomeScreen;
             } else if (id == 2) {
               currentPage = DrawerSections.contactus;
             } else if (id == 3) {
@@ -162,7 +162,7 @@ class _MainPageState extends State<MainPage> {
 }
 
 enum DrawerSections {
-  HomePage,
+  HomeScreen,
   contactus,
   Account,
   notes,
