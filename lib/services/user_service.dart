@@ -34,4 +34,13 @@ class UserService {
   void delete(String id) {
     _firestore.collection("users").doc(id).delete();
   }
+
+  Future<List<DocumentSnapshot>> itemsPaginateFuture(
+      {required int limit, DocumentSnapshot? LastDocument}) async {
+    var docRef = _firestore.collection('users').orderBy('name');
+    if (LastDocument != null) {
+      docRef = docRef.startAfterDocument(LastDocument);
+    }
+    return docRef.limit(limit).get().then((value) => value.docs);
+  }
 }

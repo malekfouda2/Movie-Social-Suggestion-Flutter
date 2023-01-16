@@ -223,45 +223,44 @@ class _SignUpState extends ConsumerState<SignUp> {
 
                 SizedBox(height: 20),
                 TextFormField(
-                  validator: (String? value) {
-                    if (value!.isEmpty ||
-                        RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
-                      return "your age should be a number";
-                    }
+                    validator: (String? value) {
+                      if (value!.isEmpty ||
+                          RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+                        return "your age should be a number";
+                      }
 
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                    hintText: ('Date of Birth'),
-                    hintStyle: TextStyle(color: Colors.white),
-                    prefixIcon: Icon(Icons.date_range, color: Colors.white),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                          20), //borders for the email text
-                      borderSide: const BorderSide(
-                        color: Colors.white,
-                        width: 1.5,
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      hintText: ('Date of Birth'),
+                      hintStyle: TextStyle(color: Colors.white),
+                      prefixIcon: Icon(Icons.date_range, color: Colors.white),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                            20), //borders for the email text
+                        borderSide: const BorderSide(
+                          color: Colors.white,
+                          width: 1.5,
+                        ),
+                      ),
+                      disabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                            20), //borders for the email text
+                        borderSide: const BorderSide(
+                          color: Colors.white,
+                          width: 1.5,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                            20), //borders for the email text
+                        borderSide: const BorderSide(
+                          color: Colors.white,
+                          width: 1.5,
+                        ),
                       ),
                     ),
-                    disabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                          20), //borders for the email text
-                      borderSide: const BorderSide(
-                        color: Colors.white,
-                        width: 1.5,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                          20), //borders for the email text
-                      borderSide: const BorderSide(
-                        color: Colors.white,
-                        width: 1.5,
-                      ),
-                    ),
-                  ),
-                  //onChanged: ((value) => model = value)
-                ),
+                    onChanged: ((value) => model.dob = value)),
 
                 SizedBox(height: 20),
                 TextFormField(
