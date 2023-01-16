@@ -6,8 +6,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth_web/firebase_auth_web.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:movies_app/navpages/homeJoe.dart';
 
 import 'package:movies_app/src/SignUp.dart';
+import 'package:tmdb_api/tmdb_api.dart';
 import '../src/LoginSceen.dart';
 import '../account.dart';
 import '../contactus.dart';
@@ -16,6 +18,7 @@ import '../navpages/main_page.dart';
 import 'src/LoginSceen.dart';
 import 'navpagesadmin/main_pageadmin.dart';
 import 'my_drawer_header.dart';
+import 'package:movies_app/navpages/movies.dart';
 //import 'package:go_router/go_router.dart';
 
 void main() async {
