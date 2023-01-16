@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:movies_app/navpages/main_page.dart';
 import '../src/ForgetPassword.dart';
 import '../src/SignUp.dart';
-import '../data/dummydata.dart';
-import '../models/loginModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -161,7 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 onTap: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
-                    return const SignUp();
+                    return SignUp();
                   }));
                 },
                 child: const Text(

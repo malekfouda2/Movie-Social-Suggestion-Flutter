@@ -22,6 +22,7 @@ class _MainPageState extends State<MainPage> {
     HomeScreen(),
     moviesPage(),
     add_movies(),
+    
   ];
 
   int currentIndex = 0;
@@ -36,6 +37,11 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Movies "),
+                backgroundColor: Color(0xFF242A32),
+
+      ),
       body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
@@ -56,10 +62,7 @@ class _MainPageState extends State<MainPage> {
               icon: const Icon(Icons.add), label: 'Add Movie')
         ],
       ),
-      appBar: AppBar(
-        backgroundColor: Color(0xFF242A32),
-        title: Text("Movies Rating"),
-      ),
+      
       drawer: Drawer(
         child: SingleChildScrollView(
           child: Container(
@@ -84,8 +87,13 @@ class _MainPageState extends State<MainPage> {
         // shows the list of menu drawer
         children: [
           menuItem(1, "Account", Icons.account_box,
+<<<<<<< HEAD
               currentPage == DrawerSections.HomeScreen ? true : false),
           menuItem(2, "Contact Us", Icons.people_alt_outlined,
+=======
+              currentPage == DrawerSections.HomePage ? true : false),
+          menuItem(2, " Logout", Icons.logout,
+>>>>>>> 3d3a14cdcbaa27bb5ecfae692f8e1c949b3ae9f8
               currentPage == DrawerSections.contactus ? true : false),
           menuItem(3, "Home", Icons.home,
               currentPage == DrawerSections.Account ? true : false),

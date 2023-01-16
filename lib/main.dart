@@ -9,6 +9,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movies_app/navpages/homeJoe.dart';
 
 import 'package:movies_app/src/SignUp.dart';
+import 'package:tmdb_api/tmdb_api.dart';
 import '../src/LoginSceen.dart';
 import '../account.dart';
 import '../contactus.dart';
@@ -17,6 +18,7 @@ import '../navpages/main_page.dart';
 import 'src/LoginSceen.dart';
 import 'navpagesadmin/main_pageadmin.dart';
 import 'my_drawer_header.dart';
+import 'package:movies_app/navpages/movies.dart';
 //import 'package:go_router/go_router.dart';
 
 void main() async {
@@ -58,7 +60,11 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
+<<<<<<< HEAD
       home: MainPage(),
+=======
+      home: SignUp(),
+>>>>>>> 3d3a14cdcbaa27bb5ecfae692f8e1c949b3ae9f8
     );
   }
 }
