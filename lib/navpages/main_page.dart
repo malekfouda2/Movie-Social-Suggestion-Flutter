@@ -3,8 +3,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/material/icons.dart';
 import 'package:movies_app/navpages/homeJoe.dart';
-import '../navpages/add_movies.dart';
-import '../navpages/movies.dart';
+import 'watchListScreen.dart';
+import 'search.dart';
 import '../account.dart';
 import '../contactus.dart';
 import '../my_drawer_header.dart';
@@ -20,8 +20,8 @@ class _MainPageState extends State<MainPage> {
   var currentPage = DrawerSections.HomeScreen;
   List pages = [
     HomeScreen(),
-    moviesPage(),
-    add_movies(),
+    SearchScreen(),
+    WatchList(),
   ];
 
   int currentIndex = 0;
@@ -50,13 +50,11 @@ class _MainPageState extends State<MainPage> {
         showUnselectedLabels: false,
         showSelectedLabels: false,
         elevation: 0,
-        items: [
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home_max), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
           BottomNavigationBarItem(
-              icon: const Icon(Icons.home_max), label: 'Home'),
-          BottomNavigationBarItem(
-              icon: const Icon(Icons.movie_creation_outlined), label: 'Movies'),
-          BottomNavigationBarItem(
-              icon: const Icon(Icons.add), label: 'Add Movie')
+              icon: Icon(Icons.watch_later_outlined), label: 'WatchList')
         ],
       ),
       drawer: Drawer(

@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth_web/firebase_auth_web.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:movies_app/navpages/homeJoe.dart';
 
 import 'package:movies_app/src/SignUp.dart';
@@ -18,7 +19,7 @@ import '../navpages/main_page.dart';
 import 'src/LoginSceen.dart';
 import 'navpagesadmin/main_pageadmin.dart';
 import 'my_drawer_header.dart';
-import 'package:movies_app/navpages/movies.dart';
+import 'package:movies_app/navpages/search.dart';
 //import 'package:go_router/go_router.dart';
 
 void main() async {
@@ -45,8 +46,7 @@ class MyApp extends StatelessWidget {
         statusBarColor: Color(0xFF242A32),
       ),
     );
-    return MaterialApp(
-      title: 'Welcome',
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false, //bashyl elbuner eldaigonal dah
 
       theme: ThemeData(
