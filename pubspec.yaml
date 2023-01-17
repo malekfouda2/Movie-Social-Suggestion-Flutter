@@ -44,7 +44,6 @@ flutter:
 
   uses-material-design: true
   assets:
-<<<<<<< HEAD
     - assets/
 
   # fonts:
@@ -57,8 +56,3 @@ flutter:
   #   - family: Montserrat
   #     fonts:
   #       - asset: fonts/Montserrat-Regular.otf
-=======
-  - assets/
-  - assets/images/
-  
->>>>>>> 3d3a14cdcbaa27bb5ecfae692f8e1c949b3ae9f8

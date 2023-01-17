@@ -4,9 +4,10 @@ import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/_http/mock/http_request_mock.dart';
 import 'package:movies_app/api/api.dart';
 import 'package:movies_app/navpages/details_screen.dart';
-import 'package:movies_app/widgets/top_rated_item.dart';
-
+import '../services/watchlist.dart';
 import '../services/movies_service.dart';
+import '../services/searchCon.dart';
+import '../services/watchlist.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
   var mainTopRatedMovies = <Movie>[];
   Result result = Result(); 
   var isLoaded = false;
-  
+
   @override
   void initState() {
     super.initState();
@@ -40,14 +41,10 @@ class _HomeScreenState extends State<HomeScreen> {
       });
     }
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor:Colors.orange,
-        title: const Text("Title")
-      ) ,
       body: 
         ListView(
           children: [

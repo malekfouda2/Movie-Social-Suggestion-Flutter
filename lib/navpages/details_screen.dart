@@ -4,16 +4,19 @@ import 'package:get/get.dart';
 import 'package:movies_app/api/api.dart';
 import 'package:movies_app/api/review.dart';
 import 'package:movies_app/services/movies_service.dart';
+import '../services/watchlist.dart';
 import '../utils/utils.dart';
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({
+   DetailsScreen({
     Key? key,
     required this.movie,
     required this.index
   }) : super(key: key);
   final Movie movie;
   final int index;
+    final watchList watch = Get.put(watchList());
   @override
+
   Widget build(BuildContext context) {
     MoviesServices.getMovieReviews(movie.results![index]!.id!);
     return SafeArea(
@@ -37,10 +40,41 @@ class DetailsScreen extends StatelessWidget {
                     ),
                     const Text(
                       'Detail',
-                      textAlign: TextAlign.left,
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 24,
+                      ),
+                    ),
+                    const Tooltip(
+                  message: 'This is your movie details screen',
+                  triggerMode: TooltipTriggerMode.tap,
+                  child: Icon(
+                    Icons.info_outline,
+                    color: Colors.white,
+                  ),
+                ),
+                Tooltip(
+                      message: 'Save this movie to your watch list',
+                      triggerMode: TooltipTriggerMode.tap,
+                      child: IconButton(
+                        onPressed: () {
+                          Get.find<watchList>().addToWatchList(movie,index);
+                        
+                        },
+                        icon: Obx(
+                          () =>
+                              Get.find<watchList>().isInWatchList(movie,index)
+                                  ? const Icon(
+                                      Icons.bookmark,
+                                      color: Colors.white,
+                                      size: 33,
+                                    )
+                                  : const Icon(
+                                      Icons.bookmark_outline,
+                                      color: Colors.white,
+                                      size: 33,
+                                    ),
+                        ),
                       ),
                     ),
                   ],

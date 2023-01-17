@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
-<<<<<<< HEAD
-=======
-import 'package:movies_app/providers/create_user_provider.dart';
-import '../navpages/home.dart';
->>>>>>> 3d3a14cdcbaa27bb5ecfae692f8e1c949b3ae9f8
+import '../providers/create_user_provider.dart';
 import '../src/LoginSceen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
