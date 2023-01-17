@@ -28,7 +28,10 @@ void main() async {
           apiKey: "AIzaSyD7q1mpLiq-ZP9dDHRhC1Y-cN5EJP96wdE",
           appId: "1:352259150436:android:431d22b33b4424242c8571",
           messagingSenderId: "",
-          projectId: "moviesuggestion-32aef"));
+          projectId: "moviesuggestion-32aef",
+          databaseURL:
+              'https://moviesuggestion-32aef-default-rtdb.firebaseio.com',
+          storageBucket: 'moviesuggestion-32aef.appspot.com'));
   runApp(ProviderScope(child: MyApp()));
 }
 
@@ -60,11 +63,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-<<<<<<< HEAD
-      home: MainPage(),
-=======
       home: SignUp(),
->>>>>>> 3d3a14cdcbaa27bb5ecfae692f8e1c949b3ae9f8
     );
   }
 }
