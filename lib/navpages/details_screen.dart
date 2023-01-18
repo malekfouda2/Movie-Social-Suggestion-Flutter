@@ -4,10 +4,13 @@ import 'package:get/get.dart';
 import 'package:movies_app/api/api.dart';
 import 'package:movies_app/api/review.dart';
 import 'package:movies_app/services/movies_service.dart';
+import '../my_drawer.dart';
 import '../services/watchlist.dart';
 import '../utils/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../models/userModel.dart';
+
+import 'package:movies_app/my_drawer.dart';
 
 class DetailsScreen extends StatelessWidget {
   DetailsScreen({Key? key, required this.movie, required this.index})
@@ -347,6 +350,7 @@ class DetailsScreen extends StatelessWidget {
             ],
           ),
         ),
+        drawer: const MyDrawer(),
       ),
     );
   }
