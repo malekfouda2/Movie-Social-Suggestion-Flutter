@@ -8,7 +8,6 @@ import 'watchListScreen.dart';
 import 'search.dart';
 import '../account.dart';
 import '../contactus.dart';
-import '../my_drawer_header.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});

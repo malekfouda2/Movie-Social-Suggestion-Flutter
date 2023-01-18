@@ -1,9 +1,11 @@
+import 'package:contactus/contactus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_launcher_icons/xml_templates.dart';
 import 'package:movies_app/account.dart';
-import 'package:movies_app/contactus.dart';
+import 'package:movies_app/contactUs.dart';
+
 import 'package:movies_app/navpages/main_page.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -35,15 +37,15 @@ class MyDrawer extends StatelessWidget {
                 ));
               },
             ),
-            ListTile(
-              leading: const Icon(Icons.account_balance ,  color: Colors.black,),
-              title: const Text('Account' , style: TextStyle(color: Colors.black),),
-              onTap: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => const Account(),
-                ));
-              },
-            ),
+            // ListTile(
+            //   leading: const Icon(Icons.account_balance ,  color: Colors.black,),
+            //   title: const Text('Account' , style: TextStyle(color: Colors.black),),
+            //   onTap: () {
+            //     Navigator.of(context).pushReplacement(MaterialPageRoute(
+            //       builder: (context) => const Account(),
+            //     ));
+            //   },
+            // ),
             // ListTile(
             //   leading: const Icon(Icons.reviews),
             //   title: const Text('About'),

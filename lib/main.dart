@@ -1,3 +1,4 @@
+import 'package:contactus/contactus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,6 +9,7 @@ import 'package:firebase_auth_web/firebase_auth_web.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:movies_app/navpages/homeJoe.dart';
+import 'package:contactus/contactus.dart';
 
 import 'package:movies_app/src/SignUp.dart';
 import 'package:tmdb_api/tmdb_api.dart';
@@ -18,7 +20,6 @@ import '../navpages/main_page.dart';
 //import 'LoginSceen.dart';
 import 'src/LoginSceen.dart';
 import 'navpagesadmin/main_pageadmin.dart';
-import 'my_drawer_header.dart';
 import 'package:movies_app/navpages/search.dart';
 //import 'package:go_router/go_router.dart';
 
@@ -63,7 +64,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: MainPage(),
+      home:  MainPage(),
     );
   }
 }
