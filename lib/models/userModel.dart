@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class User {
-  final String id;
+class Userr {
+  late final String id;
   final String name;
   final String email;
   final String password;
@@ -9,7 +9,7 @@ class User {
   final String dob;
   final String image;
 
-  User(
+  Userr(
       {required this.id,
       required this.name,
       required this.email,
@@ -18,7 +18,7 @@ class User {
       required this.dob,
       required this.image});
 
-  User copyWith(
+  Userr copyWith(
       {String? id,
       String? name,
       String? email,
@@ -27,7 +27,7 @@ class User {
       String,
       dob,
       String? image}) {
-    return User(
+    return Userr(
         id: id ?? this.id,
         name: name ?? this.name,
         email: email ?? this.email,
@@ -48,9 +48,9 @@ class User {
     };
   }
 
-  factory User.fromFirestore(DocumentSnapshot doc) {
+  factory Userr.fromFirestore(DocumentSnapshot doc) {
     final Map<String, dynamic> map = doc.data() as Map<String, dynamic>;
-    return User(
+    return Userr(
       id: doc.id,
       name: map['name'] ?? '',
       email: map['email'] ?? '',
@@ -61,7 +61,7 @@ class User {
     );
   }
 
-  factory User.empty() => User(
+  factory Userr.empty() => Userr(
       id: '',
       name: '',
       email: '',

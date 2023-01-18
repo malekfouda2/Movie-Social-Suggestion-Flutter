@@ -1,12 +1,13 @@
 import 'package:get/get.dart';
 import 'package:movies_app/services/movies_service.dart';
 import '../api/api.dart';
+import '../models/userModel.dart';
 
-class watchList extends GetxController{
-   var isLoading = false.obs;
+class watchList extends GetxController {
+  var isLoading = false.obs;
   var mainTopRatedMovies = <Movie>[].obs;
   var watchListMovies = <Movie>[].obs;
-  var indx=0;
+  var indx = 0;
 
   @override
   void onInit() async {
@@ -16,12 +17,14 @@ class watchList extends GetxController{
     super.onInit();
   }
 
-  bool isInWatchList(Movie movie,int index) {
-    return watchListMovies.any((m) => m.results![index]!.id == movie.results![index]!.id);
+  bool isInWatchList(Movie movie, int index, String id) {
+    return watchListMovies
+        .any((m) => m.results![index]!.id == movie.results![index]!.id);
   }
 
-  void addToWatchList(Movie movie,int index) {
-    if (watchListMovies.any((m) => m.results![index]!.id == movie.results![index]!.id)) {
+  void addToWatchList(Movie movie, int index, String id) {
+    if (watchListMovies
+        .any((m) => m.results![index]!.id == movie.results![index]!.id)) {
       watchListMovies.remove(movie);
       Get.snackbar('Success', 'removed from watch list',
           snackPosition: SnackPosition.BOTTOM,
@@ -29,7 +32,7 @@ class watchList extends GetxController{
           duration: const Duration(milliseconds: 500));
     } else {
       watchListMovies.add(movie);
-      indx=index;
+      indx = index;
       Get.snackbar('Success', 'added to watch list',
           snackPosition: SnackPosition.BOTTOM,
           animationDuration: const Duration(milliseconds: 500),

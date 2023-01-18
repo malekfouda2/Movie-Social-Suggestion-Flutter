@@ -12,7 +12,6 @@ import '../navpagesadmin/requests.dart';
 import '../navpagesadmin/mangeuser.dart';
 import '../navpagesadmin/mangemovies.dart';
 
-
 class MainPageAdmin extends StatefulWidget {
   const MainPageAdmin({super.key});
 
@@ -22,7 +21,11 @@ class MainPageAdmin extends StatefulWidget {
 
 class MainPageAdminState extends State<MainPageAdmin> {
   var currentPage = DrawerSections.HomePage;
-  List pages = [requests(), mangeuser() , mangemovies(),];
+  List pages = [
+    requests(),
+    mangeuser(),
+    mangemovies(),
+  ];
 
   int currentIndex = 0;
 
@@ -50,7 +53,8 @@ class MainPageAdminState extends State<MainPageAdmin> {
           BottomNavigationBarItem(
               icon: const Icon(Icons.home_max), label: 'requests'),
           BottomNavigationBarItem(
-              icon: const Icon(Icons.movie_creation_outlined), label: 'mange user'),
+              icon: const Icon(Icons.movie_creation_outlined),
+              label: 'mange user'),
           BottomNavigationBarItem(
               icon: const Icon(Icons.add), label: 'mange movies')
         ],

@@ -6,18 +6,20 @@ import 'package:movies_app/api/review.dart';
 import 'package:movies_app/services/movies_service.dart';
 import '../services/watchlist.dart';
 import '../utils/utils.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../models/userModel.dart';
+
 class DetailsScreen extends StatelessWidget {
-   DetailsScreen({
-    Key? key,
-    required this.movie,
-    required this.index
-  }) : super(key: key);
+  DetailsScreen({Key? key, required this.movie, required this.index})
+      : super(key: key);
   final Movie movie;
   final int index;
-    final watchList watch = Get.put(watchList());
+  final watchList watch = Get.put(watchList());
   @override
-
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser!;
+    String userId = user.uid;
+    //final User u = auth.currentUser;
     MoviesServices.getMovieReviews(movie.results![index]!.id!);
     return SafeArea(
       child: Scaffold(
@@ -46,34 +48,34 @@ class DetailsScreen extends StatelessWidget {
                       ),
                     ),
                     const Tooltip(
-                  message: 'This is your movie details screen',
-                  triggerMode: TooltipTriggerMode.tap,
-                  child: Icon(
-                    Icons.info_outline,
-                    color: Colors.white,
-                  ),
-                ),
-                Tooltip(
+                      message: 'This is your movie details screen',
+                      triggerMode: TooltipTriggerMode.tap,
+                      child: Icon(
+                        Icons.info_outline,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Tooltip(
                       message: 'Save this movie to your watch list',
                       triggerMode: TooltipTriggerMode.tap,
                       child: IconButton(
                         onPressed: () {
-                          Get.find<watchList>().addToWatchList(movie,index);
-                        
+                          Get.find<watchList>()
+                              .addToWatchList(movie, index, userId);
                         },
                         icon: Obx(
-                          () =>
-                              Get.find<watchList>().isInWatchList(movie,index)
-                                  ? const Icon(
-                                      Icons.bookmark,
-                                      color: Colors.white,
-                                      size: 33,
-                                    )
-                                  : const Icon(
-                                      Icons.bookmark_outline,
-                                      color: Colors.white,
-                                      size: 33,
-                                    ),
+                          () => Get.find<watchList>()
+                                  .isInWatchList(movie, index, userId)
+                              ? const Icon(
+                                  Icons.bookmark,
+                                  color: Colors.white,
+                                  size: 33,
+                                )
+                              : const Icon(
+                                  Icons.bookmark_outline,
+                                  color: Colors.white,
+                                  size: 33,
+                                ),
                         ),
                       ),
                     ),
@@ -172,7 +174,8 @@ class DetailsScreen extends StatelessWidget {
                             Text(
                               movie.results![index]!.voteAverage == 0.0
                                   ? 'N/A'
-                                  : movie.results![index]!.voteAverage.toString(),
+                                  : movie.results![index]!.voteAverage
+                                      .toString(),
                               style: const TextStyle(
                                 fontWeight: FontWeight.w400,
                                 color: Color(0xFFFF8700),
@@ -218,7 +221,7 @@ class DetailsScreen extends StatelessWidget {
                             width: 5,
                           ),
                           Text(
-                            Utils.getGenres(movie,index),
+                            Utils.getGenres(movie, index),
                             style: const TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 16,
@@ -263,7 +266,8 @@ class DetailsScreen extends StatelessWidget {
                             ),
                           ),
                           FutureBuilder<List<Review>?>(
-                            future: MoviesServices.getMovieReviews(movie.results![index]!.id!),
+                            future: MoviesServices.getMovieReviews(
+                                movie.results![index]!.id!),
                             builder: (_, snapshot) {
                               if (snapshot.hasData) {
                                 return snapshot.data!.isEmpty
