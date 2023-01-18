@@ -204,6 +204,6 @@ const SizedBox(height: 10,),
                       )
 
           ],
-        );
+        ));
   }
 }

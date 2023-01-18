@@ -1,3 +1,4 @@
+import 'package:contactus/contactus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,6 +9,7 @@ import 'package:firebase_auth_web/firebase_auth_web.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:movies_app/navpages/homeJoe.dart';
+import 'package:contactus/contactus.dart';
 
 import 'package:movies_app/src/SignUp.dart';
 import 'package:tmdb_api/tmdb_api.dart';
@@ -18,7 +20,6 @@ import '../navpages/main_page.dart';
 //import 'LoginSceen.dart';
 import 'src/LoginSceen.dart';
 import 'navpagesadmin/main_pageadmin.dart';
-import 'my_drawer_header.dart';
 import 'package:movies_app/navpages/search.dart';
 //import 'package:go_router/go_router.dart';
 
@@ -29,7 +30,10 @@ void main() async {
           apiKey: "AIzaSyD7q1mpLiq-ZP9dDHRhC1Y-cN5EJP96wdE",
           appId: "1:352259150436:android:431d22b33b4424242c8571",
           messagingSenderId: "",
-          projectId: "moviesuggestion-32aef"));
+          projectId: "moviesuggestion-32aef",
+          databaseURL:
+              'https://moviesuggestion-32aef-default-rtdb.firebaseio.com',
+          storageBucket: 'moviesuggestion-32aef.appspot.com'));
   runApp(ProviderScope(child: MyApp()));
 }
 

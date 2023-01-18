@@ -16,6 +16,8 @@ class DetailsScreen extends StatelessWidget {
     required this.movie,
   }) : super(key: key);
   final Movie movie;
+  final int index;
+    final watchList watch = Get.put(watchList());
   @override
   Widget build(BuildContext context) {
     ApiService.getMovieReviews(movie.id);
@@ -165,7 +167,7 @@ class DetailsScreen extends StatelessWidget {
                             Text(
                               movie.voteAverage == 0.0
                                   ? 'N/A'
-                                  : movie.voteAverage.toString(),
+                                  : movie.results![index]!.voteAverage.toString(),
                               style: const TextStyle(
                                 fontWeight: FontWeight.w400,
                                 color: Color(0xFFFF8700),
@@ -338,6 +340,7 @@ class DetailsScreen extends StatelessWidget {
             ],
           ),
         ),
+        drawer: const MyDrawer(),
       ),
     );
   }
