@@ -1,12 +1,10 @@
-
-
-import '../api/api.dart';
+import 'package:movies_app/models/movie.dart';
 
 class Utils{
-  static String getGenres(Movie movie,int index) {
+  static String getGenres(Movie movie) {
     List<String> genres = [];
 
-    movie.results![index]!.genreIds?.forEach((id) {
+    movie.genreIds.forEach((id) {
       [
         {28: 'Action'},
         {12: 'Adventure'},

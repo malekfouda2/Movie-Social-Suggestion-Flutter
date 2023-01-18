@@ -1,19 +1,16 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fade_shimmer/fade_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movies_app/api/api.dart';
 import '../api/api.dart';
-import '../services/movies_service.dart';
-import '../services/watchlist.dart';
-import 'details_screen.dart';
+import '../controllers/bottom_navigator_controller.dart';
+import '../controllers/movies_controller.dart';
+import '../navpages/details_screen.dart';
 
 class WatchList extends StatelessWidget {
-  const WatchList({Key? key}) : super(key: key);
-
+  WatchList({Key? key}) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
-    var indx=Get.find<watchList>().indx;
     return Obx(() => SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(34.0),
@@ -25,7 +22,8 @@ class WatchList extends StatelessWidget {
                   children: [
                     IconButton(
                       tooltip: 'Back to home',
-                      onPressed: () {},
+                      onPressed: () =>
+                          Get.find<BottomNavigatorController>().setIndex(0),
                       icon: const Icon(
                         Icons.arrow_back_ios,
                         color: Colors.white,
@@ -47,21 +45,19 @@ class WatchList extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                if (Get.find<watchList>().watchListMovies.isNotEmpty)
-                  ...Get.find<watchList>().watchListMovies.map(
+                if (Get.find<MoviesController>().watchListMovies.isNotEmpty)
+                  ...Get.find<MoviesController>().watchListMovies.map(
                         (movie) => Column(
                           children: [
                             GestureDetector(
-                              onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => DetailsScreen(movie:movie,index: indx) ),
-                  ),
-                              child: Column(
+                              onTap: () => Get.to(DetailsScreen(movie: movie)),
+                              child: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(16),
                                     child: Image.network(
-                                     'https://image.tmdb.org/t/p/w500/${movie.results![indx]!.posterPath}',
+                                      Api.imageBaseUrl + movie.posterPath,
                                       height: 180,
                                       width: 120,
                                       fit: BoxFit.cover,
@@ -80,11 +76,6 @@ class WatchList extends StatelessWidget {
                                       },
                                     ),
                                   ),
-                                  const SizedBox(height: 5),
-                                    Container(
-                                      child: Text(
-                                          movie.results![indx]!.originalTitle.toString()),
-                                    ),
                                   const SizedBox(
                                     width: 20,
                                   ),
@@ -97,7 +88,7 @@ class WatchList extends StatelessWidget {
                           ],
                         ),
                       ),
-                if (Get.find<watchList>().watchListMovies.isEmpty)
+                if (Get.find<MoviesController>().watchListMovies.isEmpty)
                   Column(
                     children: const [
                       SizedBox(

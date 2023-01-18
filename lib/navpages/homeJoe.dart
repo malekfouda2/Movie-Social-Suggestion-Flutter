@@ -2,51 +2,24 @@ import 'package:fade_shimmer/fade_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/_http/mock/http_request_mock.dart';
-import 'package:movies_app/api/api.dart';
+import '../controllers/movies_controller.dart';
+import '../models/movie.dart';
 import 'package:movies_app/navpages/details_screen.dart';
-import '../services/watchlist.dart';
-import '../services/movies_service.dart';
-import '../services/searchCon.dart';
-import '../services/watchlist.dart';
+import '../navpages/search.dart';
+import '../api/api.dart';
+import '../controllers/bottom_navigator_controller.dart';
+import '../controllers/search_controller.dart';
+import '../widgets/searchBox.dart';
+import '../widgets/top_rated_item.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-   Movie movie = Movie();
-   Movie nowPlaying = Movie();
-   Movie popular = Movie();
-  var mainTopRatedMovies = <Movie>[];
-  Result result = Result(); 
-  var isLoaded = false;
-
-  @override
-  void initState() {
-    super.initState();
-    getData();
-  }
-
-  getData() async {
-    movie = await MoviesServices().getOrganizations();
-    mainTopRatedMovies = (await MoviesServices.getTopRatedMovies())!;
-    nowPlaying = await MoviesServices().getNowPlayingMovies();
-    popular = await MoviesServices().getPopularMovies();
-    if (movie.results != null) {
-      setState(() {
-        isLoaded = true;
-      });
-    }
-  }
-  
+  final MoviesController controller = Get.put(MoviesController());
+  final SearchController searchController = Get.put(SearchController());
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: 
-        ListView(
+    return ListView(
           children: [
              const SizedBox(
               height: 10,
@@ -57,179 +30,180 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                  'Now Playing Movies',style: TextStyle(color: Colors.orange,fontSize: 20),
-                  ),
-                  const SizedBox(height: 10),
-                  Container(
-                      // color: Colors.red,
-                      height: 200,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: nowPlaying.results?.length ?? 0,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-      onTap: (){
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => DetailsScreen(movie:nowPlaying,index: index) ),
-                  );
-                },
-      child: Container(
-                                padding: const EdgeInsets.all(5),
-                                // color: Colors.green,
-                                width: 250,
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        image: DecorationImage(
-                                            image: NetworkImage(
-                                                'https://image.tmdb.org/t/p/w500/'+nowPlaying.results![index]!.posterPath.toString()),
-                                            fit: BoxFit.cover),
-                                      ),
-                                      height: 140,
-                                    ),
-                                    const SizedBox(height: 5),
-                                    Container(
-                                      child: Text(
-                                          nowPlaying.results![index]!.originalTitle.toString()),
-                                    ),
-    
-                                    
-    
-                                  ],
-                                ),
-                              ),
-    );
-                          }))
-                          ]
-              ),
-           )
-            ,
-
-            const SizedBox(
-              height: 20,
+                   const SizedBox(
+              height: 24,
             ),
-           Container(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+            SearchBox(
+              onSumbit: () {
+                String search =
+                    Get.find<SearchController>().searchController.text;
+                Get.find<SearchController>().searchController.text = '';
+                Get.find<SearchController>().search(search);
+                Get.find<BottomNavigatorController>().setIndex(1);
+                FocusManager.instance.primaryFocus?.unfocus();
+              },
+            ),
+            const SizedBox(height: 24,),
                   const Text(
-                  'Top Rated Movies',style: TextStyle(color: Colors.orange,fontSize: 20),
+                  'Now Playing Movies',style: TextStyle(color: Colors.orange,fontSize: 25),
                   ),
                   const SizedBox(height: 10),
                   Container(
-                      // color: Colors.red,
                       height: 200,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: movie.results?.length ?? 0,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-      onTap: (){
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => DetailsScreen(movie:movie,index: index) ),
-                  );
-                },
-      child: Container(
-                                padding: const EdgeInsets.all(5),
-                                // color: Colors.green,
-                                width: 250,
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        image: DecorationImage(
-                                            image: NetworkImage(
-                                                'https://image.tmdb.org/t/p/w500/'+movie.results![index]!.posterPath.toString()),
-                                            fit: BoxFit.cover),
+                      child:  Obx(() => 
+                             ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: controller.nowPlayingMovies.length,
+                                itemBuilder: (_, index) {
+                                  
+                                  return GestureDetector(
+                                      onTap: () =>
+                                                      Get.to(
+                                                        DetailsScreen(movie:controller.nowPlayingMovies[index]) 
+                                                        ),
+                                      child: Container(
+                                      padding: const EdgeInsets.all(5),
+                                      // color: Colors.green,
+                                      width: 250,
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(10),
+                                              image: DecorationImage(
+                                                  image: NetworkImage(
+                                                      Api.imageBaseUrl + controller.nowPlayingMovies[index].posterPath
+                                                      ),
+                                                  fit: BoxFit.cover),
+                                            ),
+                                            height: 140,
+                                          ),
+                                          const SizedBox(height: 5),
+                                          Container(
+                                            child: Text(
+                                                 controller.nowPlayingMovies[index].title,
+                                          ),
+                                          )
+                                        ],
                                       ),
-                                      height: 140,
                                     ),
-                                    const SizedBox(height: 5),
-                                    Container(
-                                      child: Text(
-                                          movie.results![index]!.originalTitle.toString()),
-                                    ),
-    
-                                    
-    
-                                  ],
-                                ),
-                              ),
-    );
-                          }))
+                                    );
+                                }
+                                   ),
+                          )
+                        
+                      )
                           ]
               ),
            ),
+            
 
-
-
-            const SizedBox(
-              height: 10,
-            ),
-           Container(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+const SizedBox(height: 10,),
                   const Text(
-                  'Popular Movies',style: TextStyle(color: Colors.orange,fontSize: 20),
+                  '  Top Rated Movies',style: TextStyle(color: Colors.orange,fontSize: 25),
                   ),
-                  const SizedBox(height: 10),
+   const SizedBox(height: 10),
                   Container(
-                      // color: Colors.red,
                       height: 200,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: popular.results?.length ?? 0,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-      onTap: (){
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => DetailsScreen(movie:popular,index: index) ),
-                  );
-                },
-      child: Container(
-                                padding: const EdgeInsets.all(5),
-                                // color: Colors.green,
-                                width: 250,
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        image: DecorationImage(
-                                            image: NetworkImage(
-                                                'https://image.tmdb.org/t/p/w500/'+popular.results![index]!.posterPath.toString()),
-                                            fit: BoxFit.cover),
+                      child:  Obx(() => 
+                             ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: controller.mainTopRatedMovies.length,
+                                itemBuilder: (_, index) {
+                                  
+                                  return GestureDetector(
+                                      onTap: () =>
+                                                      Get.to(
+                                                        DetailsScreen(movie:controller.mainTopRatedMovies[index]) 
+                                                        ),
+                                      child: Container(
+                                      padding: const EdgeInsets.all(5),
+                                      // color: Colors.green,
+                                      width: 250,
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(10),
+                                              image: DecorationImage(
+                                                  image: NetworkImage(
+                                                      Api.imageBaseUrl + controller.mainTopRatedMovies[index].posterPath
+                                                      ),
+                                                  fit: BoxFit.cover),
+                                            ),
+                                            height: 140,
+                                          ),
+                                          const SizedBox(height: 5),
+                                          Container(
+                                            child: Text(
+                                                 controller.mainTopRatedMovies[index].title,
+                                          ),
+                                          )
+                                        ],
                                       ),
-                                      height: 140,
                                     ),
-                                    const SizedBox(height: 5),
-                                    Container(
-                                      child: Text(
-                                          popular.results![index]!.originalTitle.toString()),
+                                    );
+                                }
+                                   ),
+                          )
+                        
+                      ),
+                    
+ 
+
+
+    const SizedBox(height: 10,),
+                  const Text(
+                  '  Popular Movies',style: TextStyle(color: Colors.orange,fontSize: 25),
+                  ),
+   const SizedBox(height: 10),
+                  Container(
+                      height: 200,
+                      child:  Obx(() => 
+                             ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: controller.popularMovies.length,
+                                itemBuilder: (_, index) {
+                                  
+                                  return GestureDetector(
+                                      onTap: () =>
+                                                      Get.to(
+                                                        DetailsScreen(movie:controller.popularMovies[index]) 
+                                                        ),
+                                      child: Container(
+                                      padding: const EdgeInsets.all(5),
+                                      // color: Colors.green,
+                                      width: 250,
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(10),
+                                              image: DecorationImage(
+                                                  image: NetworkImage(
+                                                      Api.imageBaseUrl + controller.popularMovies[index].posterPath
+                                                      ),
+                                                  fit: BoxFit.cover),
+                                            ),
+                                            height: 140,
+                                          ),
+                                          const SizedBox(height: 5),
+                                          Container(
+                                            child: Text(
+                                                 controller.popularMovies[index].title,
+                                          ),
+                                          )
+                                        ],
+                                      ),
                                     ),
-    
-                                    
-    
-                                  ],
-                                ),
-                              ),
-    );
-
-                            
-
-                          }))
-                          ]
-              ),
-           )
+                                    );
+                                }
+                                   ),
+                          )
+                        
+                      )
 
           ],
-        ));
+        );
   }
 }

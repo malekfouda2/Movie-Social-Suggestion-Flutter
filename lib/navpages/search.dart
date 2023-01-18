@@ -1,12 +1,14 @@
 import 'package:fade_shimmer/fade_shimmer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:movies_app/api/api.dart';
-
-import '../services/searchCon.dart';
+import 'package:movies_app/widgets/infos.dart';
+import '../api/api.dart';
+import '../controllers/bottom_navigator_controller.dart';
+import '../controllers/search_controller.dart';
+import '../models/movie.dart';
+import '../navpages/details_screen.dart';
+import '../utils/utils.dart';
 import '../widgets/searchBox.dart';
-import 'details_screen.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -16,7 +18,6 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-    final SearchController searchController = Get.put(SearchController());
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -31,7 +32,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 IconButton(
                   tooltip: 'Back to home',
                   onPressed: () =>
-                     Navigator.of(context).pop(),
+                      Get.find<BottomNavigatorController>().setIndex(0),
                   icon: const Icon(
                     Icons.arrow_back_ios,
                     color: Colors.white,
@@ -76,15 +77,19 @@ class _SearchScreenState extends State<SearchScreen> {
                       ? SizedBox(
                           width: Get.width / 1.5,
                           child: Column(
-                            children: const [
-                              SizedBox(
+                            children: [
+                              const SizedBox(
                                 height: 120,
                               ),
-                              Icon(Icons.search_off),
-                              SizedBox(
+                              // SvgPicture.asset(
+                              //   'assets/no.svg',
+                              //   height: 120,
+                              //   width: 120,
+                              // ),
+                              const SizedBox(
                                 height: 10,
                               ),
-                              Text(
+                              const Text(
                                 'We Are Sorry, We Can Not Find The Movie :(',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
@@ -93,10 +98,10 @@ class _SearchScreenState extends State<SearchScreen> {
                                   wordSpacing: 1,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
-                              Opacity(
+                              const Opacity(
                                 opacity: .8,
                                 child: Text(
                                   'Find your movie by Type title, categories, years, etc ',
@@ -121,16 +126,14 @@ class _SearchScreenState extends State<SearchScreen> {
                             Movie movie = Get.find<SearchController>()
                                 .foundedMovies[index];
                             return GestureDetector(
-                              onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => DetailsScreen(movie:movie,index: index) ),
-                  ),
+                              onTap: () => Get.to(DetailsScreen(movie: movie)),
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(16),
                                     child: Image.network(
-                                      'https://image.tmdb.org/t/p/w500/'+movie.results![index]!.posterPath.toString(),
+                                      Api.imageBaseUrl + movie.posterPath,
                                       height: 180,
                                       width: 120,
                                       fit: BoxFit.cover,
@@ -152,6 +155,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                   const SizedBox(
                                     width: 20,
                                   ),
+                                  Infos(movie: movie)
                                 ],
                               ),
                             );

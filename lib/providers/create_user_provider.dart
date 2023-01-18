@@ -1,4 +1,4 @@
-import 'package:movies_app/services/user_service.dart';
+import 'package:movies_app/controllers/user_service.dart';
 
 import '../models/userModel.dart';
 import '../providers/user_provider.dart';

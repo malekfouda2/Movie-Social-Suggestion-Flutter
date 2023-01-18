@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import '../services/searchCon.dart';
+import '../controllers/search_controller.dart';
 
 class SearchBox extends StatelessWidget {
   const SearchBox({
@@ -19,7 +18,11 @@ class SearchBox extends StatelessWidget {
           icon: Transform(
             alignment: Alignment.center,
             transform: Matrix4.rotationY(3.14),
-            child: Icon(Icons.search)
+            // child: SvgPicture.asset(
+            //   'assets/Search.svg',
+            //   width: 22,
+            //   height: 22,
+            // ),
           ),
           onPressed: () => onSumbit(),
         ),

@@ -48,8 +48,8 @@ class _SignUpState extends ConsumerState<SignUp> {
             child: Column(
               children: <Widget>[
                 const SizedBox(height: 100), //3shan tdy space abyd fo2
-                Image.asset('assets/images/logooo.png',
-                    width: 250, height: 250),
+                // Image.asset('assets/images/logooo.png',
+                //     width: 250, height: 250),
                 TextFormField(
                     controller: EmailController,
                     validator: (String? value) {
@@ -303,58 +303,58 @@ class _SignUpState extends ConsumerState<SignUp> {
                 ),
                 SizedBox(height: 20),
 
-                GestureDetector(
-                  onTap: () async {
-                    final picked = await ImagePicker()
-                        .pickImage(source: ImageSource.gallery);
-                    if (picked != null) {
-                      model.file = File(picked.path);
-                    }
-                  },
-                  child: Consumer(
-                    builder: (context, ref, child) {
-                      ref.watch(provider.select((value) => value.file));
+                // GestureDetector(
+                //   onTap: () async {
+                //     final picked = await ImagePicker()
+                //         .pickImage(source: ImageSource.gallery);
+                //     if (picked != null) {
+                //       model.file = File(picked.path);
+                //     }
+                //   },
+                //   child: Consumer(
+                //     builder: (context, ref, child) {
+                //       ref.watch(provider.select((value) => value.file));
 
-                      return Container(
-                        height: 100,
-                        width: 100,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            image: (model.image != null || model.file != null)
-                                ? DecorationImage(
-                                    image: model.file != null
-                                        ? FileImage(model.file!)
-                                        : NetworkImage(model.image!)
-                                            as ImageProvider,
-                                    fit: BoxFit.cover,
-                                  )
-                                : null),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            if (model.image == null && model.file == null)
-                              Expanded(
-                                child: Center(
-                                  child: Icon(Icons.photo),
-                                ),
-                              ),
-                            Material(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  "Pick Image".toUpperCase(),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      );
-                    },
-                  ),
-                ),
+                //       return Container(
+                //         height: 100,
+                //         width: 100,
+                //         clipBehavior: Clip.antiAlias,
+                //         decoration: BoxDecoration(
+                //             borderRadius: BorderRadius.circular(20),
+                //             image: (model.image != null || model.file != null)
+                //                 ? DecorationImage(
+                //                     image: model.file != null
+                //                         ? FileImage(model.file!)
+                //                         : NetworkImage(model.image!)
+                //                             as ImageProvider,
+                //                     fit: BoxFit.cover,
+                //                   )
+                //                 : null),
+                //         child: Column(
+                //           mainAxisAlignment: MainAxisAlignment.end,
+                //           crossAxisAlignment: CrossAxisAlignment.stretch,
+                //           children: [
+                //             if (model.image == null && model.file == null)
+                //               Expanded(
+                //                 child: Center(
+                //                   child: Icon(Icons.photo),
+                //                 ),
+                //               ),
+                //             Material(
+                //               child: Padding(
+                //                 padding: const EdgeInsets.all(8.0),
+                //                 child: Text(
+                //                   "Pick Image".toUpperCase(),
+                //                   textAlign: TextAlign.center,
+                //                 ),
+                //               ),
+                //             )
+                //           ],
+                //         ),
+                //       );
+                //     },
+                //   ),
+                // ),
 
                 MaterialButton(
                     color: Color.fromARGB(255, 82, 79, 77),
