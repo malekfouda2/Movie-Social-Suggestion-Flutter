@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_launcher_icons/xml_templates.dart';
 import 'package:movies_app/account.dart';
 import 'package:movies_app/contactus.dart';
 import 'package:movies_app/navpages/main_page.dart';
@@ -16,8 +17,9 @@ class MyDrawer extends StatelessWidget {
           children: [
             const SizedBox(height: 40),
             ListTile(
-              leading: const Icon(Icons.home),
-              title: const Text('homepage'),
+              leading: const Icon(Icons.home,  color: Colors.black,),
+              title: const Text('homepage' , style: TextStyle(color: Colors.black),
+                    ),
               onTap: () {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
                   builder: (context) => const MainPage(),
@@ -25,8 +27,8 @@ class MyDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.contact_phone),
-              title: const Text('grid contact us'),
+              leading: const Icon(Icons.contact_phone, color: Colors.black,),
+              title: const Text('grid contact us' , style: TextStyle(color: Colors.black),),
               onTap: () {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
                   builder: (context) => const contactUs(),
@@ -34,8 +36,8 @@ class MyDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.account_balance),
-              title: const Text('Account'),
+              leading: const Icon(Icons.account_balance ,  color: Colors.black,),
+              title: const Text('Account' , style: TextStyle(color: Colors.black),),
               onTap: () {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
                   builder: (context) => const Account(),
@@ -52,8 +54,8 @@ class MyDrawer extends StatelessWidget {
             //   },
             // ),
             ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Prefrence'),
+              leading: const Icon(Icons.settings ,  color: Colors.black,),
+              title: const Text('Prefrence' , style: TextStyle(color: Colors.black),),
               onTap: () {},
             )
           ],

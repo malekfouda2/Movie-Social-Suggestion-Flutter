@@ -4,8 +4,10 @@ import 'package:get/get.dart';
 import 'package:movies_app/api/api.dart';
 import 'package:movies_app/api/review.dart';
 import 'package:movies_app/services/movies_service.dart';
+import '../my_drawer.dart';
 import '../services/watchlist.dart';
 import '../utils/utils.dart';
+import 'package:movies_app/my_drawer.dart';
 class DetailsScreen extends StatelessWidget {
    DetailsScreen({
     Key? key,
@@ -342,7 +344,10 @@ class DetailsScreen extends StatelessWidget {
               )
             ],
           ),
+          
         ),
+          drawer: const MyDrawer(),
+
       ),
     );
   }
