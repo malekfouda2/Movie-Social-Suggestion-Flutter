@@ -37,15 +37,15 @@ class MyDrawer extends StatelessWidget {
                 ));
               },
             ),
-            // ListTile(
-            //   leading: const Icon(Icons.account_balance ,  color: Colors.black,),
-            //   title: const Text('Account' , style: TextStyle(color: Colors.black),),
-            //   onTap: () {
-            //     Navigator.of(context).pushReplacement(MaterialPageRoute(
-            //       builder: (context) => const Account(),
-            //     ));
-            //   },
-            // ),
+            ListTile(
+              leading: const Icon(Icons.account_balance ,  color: Colors.black,),
+              title: const Text('Account' , style: TextStyle(color: Colors.black),),
+              onTap: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) =>  ProfilePage(),
+                ));
+              },
+            ),
             // ListTile(
             //   leading: const Icon(Icons.reviews),
             //   title: const Text('About'),

@@ -16,7 +16,6 @@ class ApiService {
               Movie.fromMap(m),
             ),
           );
-          print('firstt'+movies.toString());
       return movies;
     } catch (e) {
       return null;
@@ -34,7 +33,6 @@ class ApiService {
               Movie.fromMap(m),
             ),
           );
-          print('firstt'+movies.toString());
       return movies;
     } catch (e) {
       return null;

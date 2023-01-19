@@ -1,21 +1,29 @@
 import 'package:fade_shimmer/fade_shimmer.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../api/api.dart';
 import '../api/api_service.dart';
 import '../controllers/bottom_navigator_controller.dart';
 import '../controllers/movies_controller.dart';
-
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:movies_app/models/movie.dart';
 import 'package:movies_app/models/review.dart';
 import 'package:movies_app/utils/utils.dart';
+import '../models/rating.dart';
 
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({
+   DetailsScreen({
     Key? key,
     required this.movie,
   }) : super(key: key);
   final Movie movie;
+//   final user = FirebaseAuth.instance.currentUser!;
+//   Future<String> getCurrentUID() async {
+// String userId = user.uid;
+//     return userId;
+//  }
+    
   @override
   Widget build(BuildContext context) {
     ApiService.getMovieReviews(movie.id);
@@ -135,17 +143,37 @@ class DetailsScreen extends StatelessWidget {
                     Positioned(
                       top: 255,
                       left: 155,
-                      child: SizedBox(
-                        width: 230,
-                        child: Text(
+                      child: Row(
+                        
+                        children:[
+                           Text(
                           movie.title,
                           style: const TextStyle(
                             fontSize: 26,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
+                        Positioned(child:RatingBar.builder(
+   initialRating: 3,
+   minRating: 1,
+   direction: Axis.horizontal,
+   allowHalfRating: true,
+   itemCount: 5,
+   itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+   itemBuilder: (context, _) => Icon(
+     Icons.star,
+     color: Colors.amber,
+   ),
+   onRatingUpdate: (rating) {
+    //String uid=getCurrentUID() as String;
+ //Rating r= Rating(userId: uid, movieId: movie.id, rating: rating);
+    // r.setStar(uid,movie.id,rating);
+   },
+)),
+                        ]
                       ),
                     ),
+                   
                     Positioned(
                       top: 200,
                       right: 30,
@@ -226,7 +254,7 @@ class DetailsScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(24),
                 child: DefaultTabController(
-                  length: 3,
+                  length: 2,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -239,7 +267,6 @@ class DetailsScreen extends StatelessWidget {
                           tabs: [
                             Tab(text: 'About Movie'),
                             Tab(text: 'Reviews'),
-                            Tab(text: 'Cast'),
                           ]),
                       SizedBox(
                         height: 400,
@@ -328,7 +355,6 @@ class DetailsScreen extends StatelessWidget {
                               }
                             },
                           ),
-                          Container(),
                         ]),
                       ),
                     ],

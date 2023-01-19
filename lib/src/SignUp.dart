@@ -33,11 +33,11 @@ String userId = user.uid;
 class _SignUpState extends State<SignUp> {
   late DatabaseReference dbRef;
 
-  var imageUrl;
-  var downloadUrl;
-  var imagee;
-  var greyimage =
-      'https://www.google.com/search?q=profile+photo+&tbm=isch&ved=2ahUKEwis27rOz_76AhVFexoKHU2PBGoQ2-cCegQIABAA&oq=profile+photo+&gs_lcp=CgNpbWcQAzIECAAQQzIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDoGCAAQBxAeULwEWLwEYKoIaABwAHgAgAGZAYgBkwKSAQMwLjKYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=d4lZY-zDCsX2ac2ektAG&bih=657&biw=1366#imgrc=nfkyptoYx2OzJM';
+  // var imageUrl;
+  // var downloadUrl;
+  // var imagee;
+  // var greyimage =
+  //     'https://www.google.com/search?q=profile+photo+&tbm=isch&ved=2ahUKEwis27rOz_76AhVFexoKHU2PBGoQ2-cCegQIABAA&oq=profile+photo+&gs_lcp=CgNpbWcQAzIECAAQQzIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDoGCAAQBxAeULwEWLwEYKoIaABwAHgAgAGZAYgBkwKSAQMwLjKYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=d4lZY-zDCsX2ac2ektAG&bih=657&biw=1366#imgrc=nfkyptoYx2OzJM';
 
   @override
   void initState() {
@@ -45,52 +45,55 @@ class _SignUpState extends State<SignUp> {
     dbRef = FirebaseDatabase.instance.ref().child("users");
   }
 
-  setImage(String imagee) {
-    imagee = imagee;
-  }
+  // setImage(String imagee) {
+  //   imagee = imagee;
+  // }
 
-  getImage() {
-    return imagee;
-  }
+  // getImage() {
+  //   return imagee;
+  // }
 
-  uploadImage() async {
-    final _storage = FirebaseStorage.instance;
-    final _picker = ImagePicker();
-    PickedFile? image;
+  // uploadImage() async {
+  //   final _storage = FirebaseStorage.instance;
+  //   final _picker = ImagePicker();
+  //   PickedFile? image;
 
     //await Permission.photos.request();
     //var permissionStatus = await Permission.photos.status;
 
-    image = await _picker.getImage(source: ImageSource.gallery);
-    var file = File(image!.path);
-    if (image != null) {
-      var snapshot =
-          await _storage.ref().child(p.basename(image.path)).putFile(file);
-      downloadUrl = await snapshot.ref.getDownloadURL();
+  //   image = await _picker.getImage(source: ImageSource.gallery);
+  //   var file = File(image!.path);
+  //   if (image != null) {
+  //     var snapshot =
+  //         await _storage.ref().child(p.basename(image.path)).putFile(file);
+  //     downloadUrl = await snapshot.ref.getDownloadURL();
 
-      setState(() {
-        imageUrl = downloadUrl;
-        greyimage = imageUrl;
-        setImage(imageUrl);
-      });
-    } else {
-      print('No path Recieved');
-    }
-  }
+  //     setState(() {
+  //       imageUrl = downloadUrl;
+  //       greyimage = imageUrl;
+  //       setImage(imageUrl);
+  //     });
+  //   } else {
+  //     print('No path Recieved');
+  //   }
+  // }
 
-  Future createUser(String email, String password, String name, String gender,
-      String dob, String userImage, String id) async {
-    await FirebaseFirestore.instance.collection('users').doc(id).set(
-      {
-        'name': name,
+  Future createUser(String name, String email, String password, String gender,
+      String dob, String id) async {
+final userInsatnce = FirebaseFirestore.instance.collection('users').doc();      
+       
+      final userData = {
+       'name': name,
         'email': email,
         'password': password,
         'gender': gender,
         'dob': dob,
-        'image': userImage,
+        // 'image': userImage,
         'id': id
-      },
-    );
+    };
+
+    await userInsatnce.set(userData);
+    
     print('new user created');
   }
 
@@ -391,32 +394,33 @@ class _SignUpState extends State<SignUp> {
                                   color: Colors.black.withOpacity(0.1))
                             ],
                             shape: BoxShape.circle,
-                            image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: NetworkImage(greyimage))),
+                            // image: DecorationImage(
+                            //     fit: BoxFit.cover,
+                            //     image: NetworkImage(greyimage))),
                       ),
-                      Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: Container(
-                            height: 40,
-                            width: 40,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  width: 4,
-                                  color: Colors.white,
-                                ),
-                                color: Colors.orange),
-                            child: TextButton(
-                              child: const Icon(
-                                Icons.upload,
-                                color: Colors.white,
-                              ),
-                              onPressed: () {
-                                uploadImage();
-                              },
-                            )),
+                      // Positioned(
+                      //   bottom: 0,
+                      //   right: 0,
+                      //   child: Container(
+                      //       height: 40,
+                      //       width: 40,
+                      //       decoration: BoxDecoration(
+                      //           shape: BoxShape.circle,
+                      //           border: Border.all(
+                      //             width: 4,
+                      //             color: Colors.white,
+                      //           ),
+                      //           color: Colors.orange),
+                      //       child: TextButton(
+                      //         child: const Icon(
+                      //           Icons.upload,
+                      //           color: Colors.white,
+                      //         ),
+                      //         onPressed: () {
+                      //           uploadImage();
+                      //         },
+                      //       )),
+                      // )
                       )
                     ],
                   ),
@@ -449,7 +453,7 @@ class _SignUpState extends State<SignUp> {
                                 PasswordController.text,
                                 genderController.text,
                                 dobController.text,
-                                greyimage,
+                                //greyimage,
                                 userId)
                             .then((value) {
                           print("Created new account");

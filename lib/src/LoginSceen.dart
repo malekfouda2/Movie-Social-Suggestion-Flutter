@@ -14,6 +14,30 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  static Future<User?> loginUsingEmailPassword(
+      {required String email,
+      required String password,
+      required BuildContext context}) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? user;
+    try {
+      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      user = userCredential.user;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "user-not-found") {
+        print("No user found");
+        final snackBar = SnackBar(content: const Text('No user found!'));
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      } else if (e.code == 'wrong-password') {
+        print("wrong password");
+        final snackBar = SnackBar(content: const Text('Wrong Password!'));
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      }
+    }
+    return user;
+  }
+
   TextEditingController EmailController = new TextEditingController();
   TextEditingController PasswordController = new TextEditingController();
   @override
@@ -33,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             children: <Widget>[
               const SizedBox(height: 100), //3shan tdy space abyd fo2
-              Image.asset('assets/images/logooo.png', width: 250, height: 250),
+              // Image.asset('assets/images/logooo.png', width: 250, height: 250),
               TextField(
                 controller: EmailController,
                 keyboardType: TextInputType.emailAddress,
@@ -124,17 +148,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   shape: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
                           50)), //el button elborder mdawar
-                  onPressed: () {
-                    FirebaseAuth.instance
+                  onPressed: () async {
+                    /* FirebaseAuth.instance
                         .signInWithEmailAndPassword(
                             email: EmailController.text,
-                            password: PasswordController.text)
-                        .then((value) {
+                            password: PasswordController.text)*/
+                    User? user = await loginUsingEmailPassword(
+                            email: EmailController.text,
+                            password: PasswordController.text,
+                            context: context);
+                         print(user);
+                        
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => const MainPage()));
-                    });
+                    
                   }),
 
               const SizedBox(

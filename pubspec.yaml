@@ -31,6 +31,9 @@ dependencies:
   permission_handler: ^10.2.0
   rename: ^2.1.1
   contactus: ^1.2.0
+  provider: ^6.0.5
+  rating_bar: ^0.2.0
+  flutter_rating_bar: ^4.0.1
   
 flutter_icons:
   android: true
@@ -49,6 +52,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/images/logooo.png
 
   # fonts:
   #   - family: Poppins

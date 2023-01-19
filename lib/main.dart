@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home:  MainPage(),
+      home:  SignUp(),
     );
   }
 }
