@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/material/icons.dart';
+import 'package:get/get.dart';
 import 'package:movies_app/navpages/homeJoe.dart';
+import '../controllers/bottom_navigator_controller.dart';
 import '../my_drawer.dart';
 import 'watchListScreen.dart';
 import 'search.dart';
@@ -99,18 +101,7 @@ class _MainPageState extends State<MainPage> {
             ),
           ),
         
-        drawer: Drawer(
-          child: SingleChildScrollView(
-            child: Container(
-              child: Column(
-                children: [
-                  MyHeaderDrawer(),
-                  MyDrawerList(),
-                ],
-              ),
-            ),
-          ),
-        ),
+        drawer: const MyDrawer()
       ),
     ));
   }

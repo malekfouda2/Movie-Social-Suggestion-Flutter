@@ -77,19 +77,15 @@ class _SearchScreenState extends State<SearchScreen> {
                       ? SizedBox(
                           width: Get.width / 1.5,
                           child: Column(
-                            children: [
-                              const SizedBox(
+                            children: const [
+                              SizedBox(
                                 height: 120,
                               ),
-                              // SvgPicture.asset(
-                              //   'assets/no.svg',
-                              //   height: 120,
-                              //   width: 120,
-                              // ),
-                              const SizedBox(
+                              Icon(Icons.search_off),
+                              SizedBox(
                                 height: 10,
                               ),
-                              const Text(
+                              Text(
                                 'We Are Sorry, We Can Not Find The Movie :(',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
@@ -98,10 +94,10 @@ class _SearchScreenState extends State<SearchScreen> {
                                   wordSpacing: 1,
                                 ),
                               ),
-                              const SizedBox(
+                              SizedBox(
                                 height: 10,
                               ),
-                              const Opacity(
+                              Opacity(
                                 opacity: .8,
                                 child: Text(
                                   'Find your movie by Type title, categories, years, etc ',
